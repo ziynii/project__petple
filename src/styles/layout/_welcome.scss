@@ -1,0 +1,57 @@
+.login-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: $sub;
+
+  .logo {
+    @include pos-center-x;
+    top: 140px;
+    width: 240px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .content {
+    @include column-flexbox(center, start);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60%;
+    padding: 0 16px;
+    background-color: $main;
+    border-radius: 48px 48px 0 0;
+
+    .title {
+      font-size: 48px;
+      color: $white;
+      margin-bottom: 36px;
+    }
+
+    p {
+      @include text-style(16, $white);
+      margin-bottom: 60px;
+    }
+
+    .button-group {
+      @include flexbox(between);
+      width: 100%;
+
+      button {
+        @include text-style(18, $sub);
+        width: 48%;
+        height: 64px;
+        font-weight: 700;
+        border: 2px solid $sub;
+        border-radius: 32px;
+
+        &.login-button {
+          color: $main;
+          background-color: $sub;
+        }
+      }
+    }
+  }
+}
