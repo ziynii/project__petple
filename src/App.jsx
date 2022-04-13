@@ -12,6 +12,8 @@ function App() {
       <Routes>
         <Route />
       </Routes>
+
+      <FooterNav />
     </BrowserRouter>
   );
 }
