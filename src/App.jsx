@@ -17,6 +17,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Welcome />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
 
       <FooterNav showHeaderAndNav={showHeaderAndNav} />

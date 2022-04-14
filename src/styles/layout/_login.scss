@@ -1,0 +1,70 @@
+.login-wrapper {
+  &.login {
+    .logo {
+      top: 120px;
+    }
+
+    .content {
+      height: 70%;
+      align-items: center;
+    }
+  }
+
+  .login-form {
+    width: 320px;
+    margin-bottom: 36px;
+  }
+
+  .input-wrap {
+    position: relative;
+    margin-bottom: 16px;
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: $dropdown-shadow;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    input {
+      width: 100%;
+      height: 60px;
+      padding: 0 48px;
+      background-color: $sub;
+    }
+
+    .fa-envelope,
+    .fa-lock,
+    .fa-user {
+      @include pos-center-y;
+      left: 16px;
+      font-size: 20px;
+      color: $main;
+    }
+  }
+
+  .sns-login {
+    @include flexbox;
+    width: 100%;
+    margin-bottom: 24px;
+    padding-top: 36px;
+    border-top: 1px solid $sub;
+
+    &-button {
+      width: 60px;
+      height: 60px;
+      font-size: 28px;
+      color: $main;
+      background-color: $sub;
+      border-radius: 50%;
+
+      &:first-child {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  .join-button {
+    @include text-style(14, $white);
+  }
+}
