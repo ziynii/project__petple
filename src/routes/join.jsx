@@ -1,6 +1,30 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../firebase';
 
-const Join = (props) => {
+const Join = () => {
+  const navigate = useNavigate();
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const pwRef = useRef();
+
+  const handleRegister = (event) => {
+    event.preventDefault();
+
+    auth
+      .createUserWithEmailAndPassword(
+        emailRef.current.value,
+        pwRef.current.value
+      )
+      .then((result) => {
+        {
+          result.user.updateProfile({ displayName: nameRef.current.value });
+          navigate('/login');
+        }
+      })
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="login-wrapper join">
       <div className="logo">
@@ -13,22 +37,41 @@ const Join = (props) => {
         <form className="login-form">
           <div className="input-wrap">
             <i className="fa-solid fa-user"></i>
-            <input type="text" className="name-input" />
+            <input
+              type="text"
+              className="name-input"
+              ref={nameRef}
+              placeholder="이름을 입력하세요"
+            />
           </div>
 
           <div className="input-wrap">
-            <i class="fa-solid fa-envelope"></i>
-            <input type="email" className="email-input" />
+            <i className="fa-solid fa-envelope"></i>
+            <input
+              type="email"
+              className="email-input"
+              ref={emailRef}
+              placeholder="이메일을 입력하세요"
+            />
           </div>
 
           <div className="input-wrap">
-            <i class="fa-solid fa-lock"></i>
-            <input type="password" className="pw-input" />
+            <i className="fa-solid fa-lock"></i>
+            <input
+              type="password"
+              className="pw-input"
+              ref={pwRef}
+              placeholder="비밀번호를 입력하세요"
+            />
           </div>
 
-          <buttton type="button" className="submit-button">
+          <button
+            type="submit"
+            className="submit-button"
+            onClick={handleRegister}
+          >
             가입하기
-          </buttton>
+          </button>
         </form>
       </div>
     </div>
