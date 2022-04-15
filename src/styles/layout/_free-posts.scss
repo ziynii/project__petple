@@ -1,27 +1,51 @@
 .main-content {
+  position: relative;
+  height: calc(100vh - 72px - 80px);
   margin-top: 72px;
-  padding: 24px 0;
 
-  .title-box {
+  .align-box-top {
+    position: relative;
     position: sticky;
-    top: calc(72px + 24px);
-    padding-bottom: 24px;
+    top: 72px;
+
+    .new-post-button {
+      @include pos-center-y;
+      z-index: $post-button-level;
+      right: 16px;
+      width: 48px;
+      height: 48px;
+      color: $main;
+      background-color: $sub;
+      border-radius: 50%;
+    }
+  }
+
+  .conent-title {
+    padding: 24px 0;
+    z-index: $content-title-level;
     text-align: center;
-		background-color: $white;
+    background-color: $white;
     border-bottom: 1px solid $border;
     box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.3);
 
     .title {
-			@include text-style(18, $primary);
+      @include text-style(18, $primary);
       margin-bottom: 4px;
     }
 
-		p {
-			@include text-style(14, $secondary);
-		}
+    p {
+      @include text-style(14, $secondary);
+    }
   }
 
   .post-list {
+    width: 100%;
+    height: calc(100% - 81px - 24px);
+    overflow: scroll;
     padding: 0 16px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
