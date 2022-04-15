@@ -1,0 +1,50 @@
+.post-item {
+  padding: 24px 0;
+  background-color: $white;
+  border-bottom: 1px solid $border;
+
+  .post-info {
+    @include flexbox(start);
+    margin-bottom: 24px;
+
+    .author-image {
+      width: 36px;
+      height: 36px;
+      margin-right: 8px;
+      border-radius: 50%;
+    }
+
+    .author-name {
+      @include text-style(18, $primary);
+    }
+  }
+
+  .post-content {
+    margin-bottom: 24px;
+  }
+
+  .align-box-bottom {
+    @include flexbox(between);
+  }
+
+  .post-reaction {
+    @include flexbox(start);
+    @include text-style(13, $primary);
+
+    .total-like {
+      margin-right: 16px;
+    }
+
+    .total-like,
+    .total-comment {
+      svg {
+        color: $tertiary;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .date {
+    @include text-style(13, $secondary);
+  }
+}

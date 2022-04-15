@@ -1,6 +1,7 @@
 @import './constants/color';
 @import './constants/typography';
 @import './constants/box-shadows';
+@import './constants/z-index';
 
 @import './base/globals';
 @import './base/nomalize';
@@ -16,3 +17,5 @@
 @import './layout/login';
 @import './layout/join';
 @import './layout/free-posts';
+
+@import './component/free-post';
