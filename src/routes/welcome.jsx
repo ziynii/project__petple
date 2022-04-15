@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Welcome = () => {
+const Welcome = ({ setShowHeaderAndNav }) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setShowHeaderAndNav(false);
+  }, []);
 
   return (
     <div className="welcome login-wrapper">

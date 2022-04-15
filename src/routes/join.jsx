@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 
-const Join = () => {
+const Join = ({ setShowHeaderAndNav }) => {
   const navigate = useNavigate();
   const nameRef = useRef();
   const emailRef = useRef();
@@ -24,6 +24,10 @@ const Join = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    setShowHeaderAndNav(false);
+  }, []);
 
   return (
     <div className="login-wrapper join">
