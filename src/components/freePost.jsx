@@ -1,6 +1,6 @@
 import React from 'react';
 
-const FreePost = (props) => {
+const FreePost = ({ post }) => {
   return (
     <li className="post-item">
       <div className="post-info">
@@ -8,10 +8,10 @@ const FreePost = (props) => {
           className="author-image"
           style={{ backgroundImage: `url("https://via.placeholder.com/350")` }}
         ></div>
-        <strong className="author-name">뎐구</strong>
+        <strong className="author-name">{post.username}</strong>
       </div>
 
-      <p className="post-content">저희 강아지 너무 귀엽지 않나요 하트하트</p>
+      <p className="post-content">{post.content}</p>
 
       <div className="align-box-bottom">
         <div className="post-reaction">
@@ -25,7 +25,7 @@ const FreePost = (props) => {
           </div>
         </div>
 
-        <span className="date">2022-04-15</span>
+        <span className="date">{post.date}</span>
       </div>
 
       {/* <div className="my-reaction">
