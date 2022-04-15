@@ -12,6 +12,10 @@ const FreePost = ({ post }) => {
       </div>
 
       <p className="post-content">{post.content}</p>
+      <div
+        className="image"
+        style={{ backgroundImage: `url(${post.image})` }}
+      ></div>
 
       <div className="align-box-bottom">
         <div className="post-reaction">

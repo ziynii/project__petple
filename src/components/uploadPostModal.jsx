@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { db } from '../firebase';
+import { db, storage } from '../firebase';
 import Overlay from './overlay';
 
 const UploadPostModal = ({ setIsUpload }) => {
@@ -9,14 +9,34 @@ const UploadPostModal = ({ setIsUpload }) => {
   const date = new Date(+new Date() + 3240 * 10000).toISOString().split('T')[0];
 
   const onSubmit = () => {
-    db.collection('freePosts').add({
-      content: contentRef.current.value,
-      date: date,
-      uid: user.uid,
-      username: user.displayName,
-    });
+    const file = document.querySelector('.image-input').files[0];
+    const storageRef = storage.ref();
+    const saveImageRef = storageRef.child('image/' + file.name);
+    const uploadImage = saveImageRef.put(file);
 
-    setIsUpload(false);
+    uploadImage.on(
+      'state_change',
+      null,
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        uploadImage.snapshot.ref
+          .getDownloadURL()
+          .then((url) => {
+            db.collection('freePosts').add({
+              content: contentRef.current.value,
+              image: url,
+              date: date,
+              uid: user.uid,
+              username: user.displayName,
+            });
+          })
+          .then((result) => console.log(result));
+      }
+    );
+
+    // setIsUpload(false);
   };
 
   return (
