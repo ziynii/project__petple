@@ -41,6 +41,7 @@ function App() {
         />
         <Route path="/login" element={<Login />} />
         <Route path="/join" element={<Join />} />
+        <Route path="/free" element={<FreePosts />} />
       </Routes>
 
       <FooterNav showHeaderAndNav={showHeaderAndNav} />
