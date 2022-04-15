@@ -1,0 +1,27 @@
+.main-content {
+  margin-top: 72px;
+  padding: 24px 0;
+
+  .title-box {
+    position: sticky;
+    top: calc(72px + 24px);
+    padding-bottom: 24px;
+    text-align: center;
+		background-color: $white;
+    border-bottom: 1px solid $border;
+    box-shadow: 0 4px 4px -4px rgba(0, 0, 0, 0.3);
+
+    .title {
+			@include text-style(18, $primary);
+      margin-bottom: 4px;
+    }
+
+		p {
+			@include text-style(14, $secondary);
+		}
+  }
+
+  .post-list {
+    padding: 0 16px;
+  }
+}
