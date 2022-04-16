@@ -3,40 +3,51 @@ import { db, storage } from '../firebase';
 import Overlay from './overlay';
 
 const UploadPostModal = ({ setIsUpload }) => {
-  const contentRef = useRef();
+  const [textContent, setTextContent] = useState('');
+  const imageRef = useRef(null);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
-  console.log(user);
   const date = new Date(+new Date() + 3240 * 10000).toISOString().split('T')[0];
 
-  const onSubmit = () => {
-    const file = document.querySelector('.image-input').files[0];
-    const storageRef = storage.ref();
-    const saveImageRef = storageRef.child('image/' + file.name);
-    const uploadImage = saveImageRef.put(file);
+  const onChangeTextContent = (e) => {
+    setTextContent(e.target.value);
+  };
 
-    uploadImage.on(
-      'state_change',
-      null,
-      (error) => {
-        console.log(error);
-      },
-      () => {
-        uploadImage.snapshot.ref
-          .getDownloadURL()
-          .then((url) => {
+  const onSubmit = () => {
+    if (imageRef.current.value == '') {
+      db.collection('freePosts').add({
+        content: textContent,
+        image: '',
+        date: date,
+        uid: user.uid,
+        username: user.displayName,
+      });
+    } else {
+      const file = document.querySelector('.image-input').files[0];
+      const storageRef = storage.ref();
+      const saveImageRef = storageRef.child('image/' + file.name);
+      const uploadImage = saveImageRef.put(file);
+
+      uploadImage.on(
+        'state_change',
+        null,
+        (error) => {
+          console.log(error);
+        },
+        () => {
+          uploadImage.snapshot.ref.getDownloadURL().then((url) => {
             db.collection('freePosts').add({
-              content: contentRef.current.value,
+              content: textContent,
               image: url,
               date: date,
               uid: user.uid,
               username: user.displayName,
             });
-          })
-          .then((result) => console.log(result));
-      }
-    );
+          });
+        }
+      );
+    }
 
-    // setIsUpload(false);
+    setIsUpload(false);
   };
 
   return (
@@ -48,10 +59,11 @@ const UploadPostModal = ({ setIsUpload }) => {
           <textarea
             type="text"
             className="content-input"
-            ref={contentRef}
+            value={textContent}
+            onChange={onChangeTextContent}
             rows="8"
           />
-          <input type="file" className="image-input" />
+          <input type="file" className="image-input" ref={imageRef} />
         </form>
 
         <button className="submit-button" onClick={onSubmit}>
