@@ -27,8 +27,10 @@ function App() {
   });
 
   useEffect(() => {
-    setUsername(JSON.parse(localStorage.getItem('user')).displayName);
-  }, []);
+    if (username) {
+      setUsername(JSON.parse(localStorage.getItem('user')).displayName);
+    }
+  }, [username]);
 
   return (
     <BrowserRouter>
@@ -39,9 +41,14 @@ function App() {
           path="/"
           element={<Welcome setShowHeaderAndNav={setShowHeaderAndNav} />}
         />
-        <Route path="/login" element={<Login />} />
-        <Route path="/join" element={<Join />} />
+        <Route path="/login" element={<Login setShowHeaderAndNav={setShowHeaderAndNav} />} />
+        <Route path="/join" element={<Join setShowHeaderAndNav={setShowHeaderAndNav} />} />
+        <Route
+          path="/home"
+          element={<Home setShowHeaderAndNav={setShowHeaderAndNav} />}
+        />
         <Route path="/free" element={<FreePosts />} />
+        <Route path="/mypage" element={<Mypage />} />
       </Routes>
 
       <FooterNav showHeaderAndNav={showHeaderAndNav} />
