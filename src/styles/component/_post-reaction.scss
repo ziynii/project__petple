@@ -1,0 +1,24 @@
+.post-reaction-wrap {
+  @include flexbox(between);
+
+  .post-reaction {
+    @include flexbox(start);
+    @include text-style(13, $primary);
+
+    .total-like {
+      margin-right: 16px;
+    }
+
+    .total-like,
+    .total-comment {
+      svg {
+        color: $tertiary;
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .date {
+    @include text-style(13, $secondary);
+  }
+}

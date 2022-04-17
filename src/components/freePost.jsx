@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import PostReaction from './postReaction';
 
 const FreePost = ({ post, doc }) => {
   const [isImageFile, setIsImageFile] = useState(false);
@@ -34,20 +35,7 @@ const FreePost = ({ post, doc }) => {
         </div>
       </Link>
 
-      <div className="align-box-bottom">
-        <div className="post-reaction">
-          <div className="total-like">
-            <i className="fa-solid fa-heart"></i>
-            {post.totalLike}개
-          </div>
-          <div className="total-comment">
-            <i className="fa-solid fa-message"></i>
-            {post.totalComment}개
-          </div>
-        </div>
-
-        <span className="date">{post.date}</span>
-      </div>
+      <PostReaction />
     </li>
   );
 };
