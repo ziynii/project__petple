@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import FreePost from '../components/freePost';
+import UploadPostModal from '../components/uploadPostModal';
 import { db } from '../firebase';
 
 const FreePosts = ({ user }) => {
@@ -44,6 +45,10 @@ const FreePosts = ({ user }) => {
           return <FreePost post={post} key={i} />;
         })}
       </ul>
+
+      {isUpload ? (
+        <UploadPostModal setIsUpload={setIsUpload} user={user} />
+      ) : null}
     </div>
   );
 };
