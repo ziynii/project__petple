@@ -1,12 +1,18 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const Welcome = ({ setShowHeaderAndNav }) => {
+const Welcome = ({ setShowHeaderAndNav, user }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     setShowHeaderAndNav(false);
   }, []);
+
+  useEffect(() => {
+    if (user) {
+      navigate('/home');
+    }
+  }, [user]);
 
   return (
     <div className="welcome login-wrapper">

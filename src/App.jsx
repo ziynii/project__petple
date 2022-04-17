@@ -14,23 +14,21 @@ import { auth } from './firebase';
 
 function App() {
   const [showHeaderAndNav, setShowHeaderAndNav] = useState(true);
-  const [username, setUsername] = useState();
-
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
-      console.log(user);
-    }
-    if (!user) {
-      localStorage.removeItem('user');
-    }
-  });
+  const [isUser, setIsUser] = useState(null);
 
   useEffect(() => {
-    if (username) {
-      setUsername(JSON.parse(localStorage.getItem('user')).displayName);
-    }
-  }, [username]);
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        localStorage.setItem('user', JSON.stringify(user));
+        setIsUser(JSON.parse(localStorage.getItem('user')));
+      }
+      if (!user) {
+        localStorage.removeItem('user');
+      }
+    });
+  }, []);
+
+  console.log(isUser);
 
   return (
     <BrowserRouter>
@@ -39,15 +37,23 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Welcome setShowHeaderAndNav={setShowHeaderAndNav} />}
+          element={
+            <Welcome setShowHeaderAndNav={setShowHeaderAndNav} user={isUser} />
+          }
         />
-        <Route path="/login" element={<Login setShowHeaderAndNav={setShowHeaderAndNav} />} />
-        <Route path="/join" element={<Join setShowHeaderAndNav={setShowHeaderAndNav} />} />
+        <Route
+          path="/login"
+          element={<Login setShowHeaderAndNav={setShowHeaderAndNav} />}
+        />
+        <Route
+          path="/join"
+          element={<Join setShowHeaderAndNav={setShowHeaderAndNav} />}
+        />
         <Route
           path="/home"
           element={<Home setShowHeaderAndNav={setShowHeaderAndNav} />}
         />
-        <Route path="/free" element={<FreePosts />} />
+        <Route path="/free" element={<FreePosts />} user={isUser} />
         <Route path="/mypage" element={<Mypage />} />
       </Routes>
 

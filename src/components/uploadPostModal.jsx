@@ -2,10 +2,9 @@ import React, { useRef, useState } from 'react';
 import { db, storage } from '../firebase';
 import Overlay from './overlay';
 
-const UploadPostModal = ({ setIsUpload }) => {
+const UploadPostModal = ({ setIsUpload, user }) => {
   const [textContent, setTextContent] = useState('');
   const imageRef = useRef(null);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const date = new Date(+new Date() + 3240 * 10000).toISOString().split('T')[0];
 
   const onChangeTextContent = (e) => {
