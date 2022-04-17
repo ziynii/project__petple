@@ -1,16 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Comment from '../components/comment';
 import { db } from '../firebase';
 
-const Detail = () => {
+const Detail = ({ user }) => {
   const postId = useParams();
   const [post, setPost] = useState();
+  const commentRef = useRef();
+  const [comments, setCommnets] = useState([]);
+
+  const onSubmit = () => {
+    db.collection('comments').add({
+      postId: postId.id,
+      content: commentRef.current.value,
+      date: new Date(+new Date() + 3240 * 10000).toISOString().split('T')[0],
+      uid: user.uid,
+      name: user.displayName,
+    });
+  };
 
   useEffect(() => {
     db.collection('freePosts')
       .doc(postId.id)
       .get()
       .then((result) => setPost(result.data()));
+  }, []);
+
+  useEffect(() => {
+    db.collection('comments')
+      .get({ postId: postId.id })
+      .then((result) => {
+        let commentsArray = [];
+
+        result.forEach((doc) => {
+          commentsArray.push(doc.data());
+        });
+
+        setCommnets(commentsArray);
+      });
   }, []);
 
   return (
@@ -38,7 +65,11 @@ const Detail = () => {
           <i className="fa-solid fa-heart"></i>
           <span>좋아요</span>
         </button>
-        <button type="button" className="is-comment">
+        <button
+          type="button"
+          className="is-comment"
+          onClick={() => commentRef.current.focus()}
+        >
           <i className="fa-solid fa-message"></i>
           <span>댓글</span>
         </button>
@@ -46,103 +77,18 @@ const Detail = () => {
 
       <div className="comment-box">
         <ul className="comment-list">
-          <li className="comment-item">
-            <div className="comment-user">
-              <div
-                className="user-image"
-                style={{
-                  backgroundImage: `url("https://via.placeholder.com/350")`,
-                }}
-              ></div>
-              <strong className="user-name">치와와사랑</strong>
-            </div>
-            <div className="comment-info">
-              <p className="content">봄이 너무 예쁘네요 ~ </p>
-              <span className="date">2022-04-17</span>
-            </div>
-          </li>
-          <li className="comment-item">
-            <div className="comment-user">
-              <div
-                className="user-image"
-                style={{
-                  backgroundImage: `url("https://via.placeholder.com/350")`,
-                }}
-              ></div>
-              <strong className="user-name">치와와사랑</strong>
-            </div>
-            <div className="comment-info">
-              <p className="content">봄이 너무 예쁘네요 ~ </p>
-              <span className="date">2022-04-17</span>
-            </div>
-          </li>
-          <li className="comment-item">
-            <div className="comment-user">
-              <div
-                className="user-image"
-                style={{
-                  backgroundImage: `url("https://via.placeholder.com/350")`,
-                }}
-              ></div>
-              <strong className="user-name">치와와사랑</strong>
-            </div>
-            <div className="comment-info">
-              <p className="content">봄이 너무 예쁘네요 ~ </p>
-              <span className="date">2022-04-17</span>
-            </div>
-          </li>
-          <li className="comment-item">
-            <div className="comment-user">
-              <div
-                className="user-image"
-                style={{
-                  backgroundImage: `url("https://via.placeholder.com/350")`,
-                }}
-              ></div>
-              <strong className="user-name">치와와사랑</strong>
-            </div>
-            <div className="comment-info">
-              <p className="content">봄이 너무 예쁘네요 ~ </p>
-              <span className="date">2022-04-17</span>
-            </div>
-          </li>
-          <li className="comment-item">
-            <div className="comment-user">
-              <div
-                className="user-image"
-                style={{
-                  backgroundImage: `url("https://via.placeholder.com/350")`,
-                }}
-              ></div>
-              <strong className="user-name">치와와사랑</strong>
-            </div>
-            <div className="comment-info">
-              <p className="content">봄이 너무 예쁘네요 ~ </p>
-              <span className="date">2022-04-17</span>
-            </div>
-          </li>
-          <li className="comment-item">
-            <div className="comment-user">
-              <div
-                className="user-image"
-                style={{
-                  backgroundImage: `url("https://via.placeholder.com/350")`,
-                }}
-              ></div>
-              <strong className="user-name">치와와사랑</strong>
-            </div>
-            <div className="comment-info">
-              <p className="content">봄이 너무 예쁘네요 ~ </p>
-              <span className="date">2022-04-17</span>
-            </div>
-          </li>
+          {comments.map((comment, i) => {
+            return <Comment comment={comment} key={i} />;
+          })}
         </ul>
 
         <div className="comment-form-wrap">
           <p className="comment-title">댓글쓰기</p>
           <form className="comment-form">
-            <input type="text" className="comment-input" />
-            <button className="submit-button">등록</button>
+            <input type="text" className="comment-input" ref={commentRef} />
+            <button className="submit-button" onClick={onSubmit}>
+              등록
+            </button>
           </form>
         </div>
       </div>

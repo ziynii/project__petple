@@ -56,7 +56,7 @@ function App() {
         />
         <Route path="/free" element={<FreePosts />} user={isUser} />
         <Route path="/mypage" element={<Mypage />} />
-        <Route path="/detail/:id" element={<Detail />} />
+        <Route path="/detail/:id" element={<Detail user={isUser} />} />
       </Routes>
 
       <FooterNav showHeaderAndNav={showHeaderAndNav} />
