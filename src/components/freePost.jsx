@@ -22,6 +22,7 @@ const FreePost = ({ post }) => {
         <strong className="author-name">{post.username}</strong>
       </div>
 
+      <Link to={`/detail/${post.uid}`}>
         <div className="post-content">
           <p className="text">{post.content}</p>
           {isImageFile ? (
@@ -31,6 +32,7 @@ const FreePost = ({ post }) => {
             ></div>
           ) : null}
         </div>
+      </Link>
 
       <div className="align-box-bottom">
         <div className="post-reaction">
