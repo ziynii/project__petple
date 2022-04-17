@@ -1,0 +1,140 @@
+.main-content {
+  &.detail {
+    padding: 24px 16px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .post-author {
+      @include flexbox(start);
+      margin-bottom: 24px;
+
+      .author-image {
+        width: 60px;
+        height: 60px;
+        margin-right: 8px;
+        border-radius: 50%;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .author-name {
+        @include text-style(18, $primary);
+      }
+    }
+
+    .post-content {
+      margin-bottom: 24px;
+
+      .text {
+        @include text-style(16, $primary);
+        margin-bottom: 16px;
+      }
+
+      .image {
+        width: 100%;
+        height: 320px;
+        border-radius: 8px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+    }
+
+    .my-reaction {
+      @include flexbox;
+      width: 100%;
+      padding-bottom: 24px;
+      border-bottom: 1px solid $border;
+
+      & > button {
+        @include flexbox;
+        @include text-style(14, $tertiary);
+        flex-basis: 50%;
+
+        &:first-child {
+          border-right: 1px solid $border;
+        }
+
+        .fa-message,
+        .fa-heart {
+          margin-right: 8px;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .comment-box {
+      .comment-list {
+        margin-bottom: 24px;
+
+        .comment-item {
+          padding: 24px 0;
+          border-bottom: 1px solid $border;
+
+          .comment-user {
+            @include flexbox(start);
+            margin-bottom: 4px;
+
+            .user-image {
+              width: 32px;
+              height: 32px;
+              margin-right: 8px;
+              border-radius: 50%;
+              background-size: cover;
+              background-repeat: no-repeat;
+            }
+
+            .user-name {
+              @include text-style(14, $primary);
+            }
+          }
+
+          .comment-info {
+            margin-left: calc(32px + 8px);
+
+            .content {
+              @include text-style(14, $primary);
+              margin-bottom: 2px;
+            }
+
+            .date {
+              @include text-style(12, $secondary);
+            }
+          }
+        }
+      }
+    }
+
+    .comment-form-wrap {
+      .comment-title {
+        @include text-style(14, $primary);
+        font-weight: 700;
+      }
+
+      .comment-form {
+        @include flexbox(start);
+        width: 100%;
+
+        .comment-input {
+          flex-grow: 1;
+          padding: 8px;
+          margin-right: 8px;
+          border: 1px solid $border;
+          border-radius: 4px;
+        }
+
+        .submit-button {
+          @include text-style(14, $main);
+          width: 60px;
+          padding: 8px;
+					font-weight: 700;
+          background-color: $sub;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}

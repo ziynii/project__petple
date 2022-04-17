@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const FreePost = ({ post }) => {
+const FreePost = ({ post, doc }) => {
   const [isImageFile, setIsImageFile] = useState(false);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const FreePost = ({ post }) => {
         <strong className="author-name">{post.username}</strong>
       </div>
 
-      <Link to={`/detail/${post.uid}`}>
+      <Link to={`/detail/${doc.id}`}>
         <div className="post-content">
           <p className="text">{post.content}</p>
           {isImageFile ? (

@@ -6,6 +6,7 @@ import { db } from '../firebase';
 const FreePosts = ({ user }) => {
   const [isUpload, setIsUpload] = useState(false);
   const [posts, setPosts] = useState([]);
+  const [isDoc, setIsDoc] = useState({});
 
   const openUploadModal = () => {
     setIsUpload(true);
@@ -16,10 +17,15 @@ const FreePosts = ({ user }) => {
       .get()
       .then((result) => {
         let postsArray = [];
+        let docsArray = [];
+
         result.forEach((doc) => {
           postsArray.push(doc.data());
+          docsArray.push(doc);
         });
+
         setPosts(postsArray);
+        setIsDoc(docsArray);
       });
   }, [isUpload]);
 
@@ -42,7 +48,7 @@ const FreePosts = ({ user }) => {
 
       <ul className="post-list">
         {posts?.map((post, i) => {
-          return <FreePost post={post} key={i} />;
+          return <FreePost post={post} key={i} doc={isDoc[i]} />;
         })}
       </ul>
 

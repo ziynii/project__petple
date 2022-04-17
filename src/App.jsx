@@ -11,6 +11,7 @@ import Home from './routes/home';
 import FreePosts from './routes/freePosts';
 import Mypage from './routes/mypage';
 import { auth } from './firebase';
+import Detail from './routes/detail';
 
 function App() {
   const [showHeaderAndNav, setShowHeaderAndNav] = useState(true);
@@ -55,6 +56,7 @@ function App() {
         />
         <Route path="/free" element={<FreePosts />} user={isUser} />
         <Route path="/mypage" element={<Mypage />} />
+        <Route path="/detail/:id" element={<Detail />} />
       </Routes>
 
       <FooterNav showHeaderAndNav={showHeaderAndNav} />
