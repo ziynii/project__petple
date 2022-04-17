@@ -1,0 +1,28 @@
+.comment-form-wrap {
+  .comment-title {
+    @include text-style(14, $primary);
+    font-weight: 700;
+  }
+
+  .comment-form {
+    @include flexbox(start);
+    width: 100%;
+
+    .comment-input {
+      flex-grow: 1;
+      padding: 8px;
+      margin-right: 8px;
+      border: 1px solid $border;
+      border-radius: 4px;
+    }
+
+    .submit-button {
+      @include text-style(14, $main);
+      width: 60px;
+      padding: 8px;
+      font-weight: 700;
+      background-color: $sub;
+      border-radius: 4px;
+    }
+  }
+}

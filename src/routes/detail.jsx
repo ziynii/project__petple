@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Comment from '../components/comment';
+import CommentForm from '../components/commentForm';
 import { db } from '../firebase';
 
 const Detail = ({ user }) => {
@@ -8,16 +9,6 @@ const Detail = ({ user }) => {
   const [post, setPost] = useState();
   const commentRef = useRef();
   const [comments, setCommnets] = useState([]);
-
-  const onSubmit = () => {
-    db.collection('comments').add({
-      postId: postId.id,
-      content: commentRef.current.value,
-      date: new Date(+new Date() + 3240 * 10000).toISOString().split('T')[0],
-      uid: user.uid,
-      name: user.displayName,
-    });
-  };
 
   useEffect(() => {
     db.collection('freePosts')
@@ -81,17 +72,9 @@ const Detail = ({ user }) => {
             return <Comment comment={comment} key={i} />;
           })}
         </ul>
-
-        <div className="comment-form-wrap">
-          <p className="comment-title">댓글쓰기</p>
-          <form className="comment-form">
-            <input type="text" className="comment-input" ref={commentRef} />
-            <button className="submit-button" onClick={onSubmit}>
-              등록
-            </button>
-          </form>
-        </div>
       </div>
+
+      <CommentForm user={user} postId={postId} commentRef={commentRef}/>
     </div>
   );
 };
