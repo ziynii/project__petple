@@ -35,7 +35,7 @@ const FreePost = ({ post, doc }) => {
         </div>
       </Link>
 
-      <PostReaction />
+      <PostReaction post={post}/>
     </li>
   );
 };

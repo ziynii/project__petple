@@ -20,7 +20,6 @@ const UploadPostModal = ({ setIsUpload, user }) => {
         uid: user.uid,
         username: user.displayName,
         likes: [],
-        comments: [],
       });
     } else {
       const file = document.querySelector('.image-input').files[0];
@@ -43,7 +42,6 @@ const UploadPostModal = ({ setIsUpload, user }) => {
               uid: user.uid,
               username: user.displayName,
               likes: [],
-              comments: [],
             });
           });
         }
