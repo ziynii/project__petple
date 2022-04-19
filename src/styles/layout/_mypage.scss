@@ -1,0 +1,70 @@
+.mypage {
+  .user {
+    @include flexbox(start);
+    padding: 24px 16px;
+    margin-bottom: 24px;
+
+    .user-image {
+      width: 96px;
+      height: 96px;
+      margin-right: 16px;
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 50%;
+    }
+
+    .user-name {
+      @include text-style(24, $primary);
+      margin-bottom: 12px;
+    }
+
+    button {
+      @include text-style(13, $main);
+      padding: 4px 8px;
+      border: 1px solid $main;
+      border-radius: 4px;
+
+      &.profile-change-button {
+        margin-right: 8px;
+        color: $white;
+        background-color: $main;
+      }
+    }
+  }
+
+  .mypost {
+    padding: 0 16px;
+
+    .button-group {
+      padding: 24px 0;
+      border-top: 1px solid $border;
+      border-bottom: 1px solid $border;
+     
+			button {
+        @include text-style(16, $primary);
+				width: 100px;
+				text-align: center;
+      }
+    }
+
+    .mypost-item {
+      padding: 24px 8px;
+			border-bottom: 1px solid $border;
+
+      p {
+        @include text-style(14, $primary);
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      span {
+        @include text-style(12, $secondary);
+
+        &.author {
+          margin-right: 16px;
+        }
+      }
+    }
+  }
+}
