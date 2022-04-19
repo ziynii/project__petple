@@ -1,20 +1,20 @@
-.post-reaction-wrap {
+.post-reaction {
   @include flexbox(between);
+  @include text-style(13, $primary);
+  margin-bottom: 24px;
+	
+  .total-like {
+    margin-right: 16px;
+  }
 
-  .post-reaction {
-    @include flexbox(start);
-    @include text-style(13, $primary);
-
-    .total-like {
-      margin-right: 16px;
+  .total-like {
+    .fa-heart {
+      color: $tertiary;
+      margin-right: 4px;
     }
 
-    .total-like,
-    .total-comment {
-      svg {
-        color: $tertiary;
-        margin-right: 4px;
-      }
+    &.is-active {
+      color: $main;
     }
   }
 
