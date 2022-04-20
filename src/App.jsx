@@ -12,6 +12,7 @@ import FreePosts from './routes/freePosts';
 import Mypage from './routes/mypage';
 import { auth } from './firebase';
 import Detail from './routes/detail';
+import Community from './routes/community';
 
 function App() {
   const [showHeaderAndNav, setShowHeaderAndNav] = useState(true);
@@ -22,9 +23,6 @@ function App() {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
         setIsUser(JSON.parse(localStorage.getItem('user')));
-      }
-      if (!user) {
-        localStorage.removeItem('user');
       }
     });
   }, []);
@@ -54,8 +52,8 @@ function App() {
           path="/home"
           element={<Home setShowHeaderAndNav={setShowHeaderAndNav} />}
         />
-        <Route path="/free" element={<FreePosts />} user={isUser} />
-        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/free" element={<FreePosts user={isUser} />} />
+        <Route path="/mypage" element={<Mypage user={isUser} />} />
         <Route path="/detail/:id" element={<Detail user={isUser} />} />
       </Routes>
 
