@@ -4,6 +4,7 @@ import { db } from '../firebase';
 
 const Community = (props) => {
   const [communities, setCommunities] = useState([]);
+  const [isModal, setIsModal] = useState(true);
 
   useEffect(() => {
     db.collection('community')
@@ -47,6 +48,8 @@ const Community = (props) => {
           );
         })}
       </ul>
+
+      {isModal ? <JoinCommunityModal /> : null}
     </div>
   );
 };
