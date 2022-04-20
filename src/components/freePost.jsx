@@ -11,7 +11,7 @@ const FreePost = ({ post, doc }) => {
     } else {
       setIsImageFile(true);
     }
-  });
+  }, []);
 
   return (
     <li className="post-item">
@@ -35,7 +35,7 @@ const FreePost = ({ post, doc }) => {
         </div>
       </Link>
 
-      <PostReaction post={post}/>
+      <PostReaction post={post} />
     </li>
   );
 };
