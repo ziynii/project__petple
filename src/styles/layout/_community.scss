@@ -1,0 +1,40 @@
+.community {
+  .community-list {
+    @include flexbox(between);
+    flex-wrap: wrap;
+    padding: 24px 16px;
+
+    .community-item {
+      position: relative;
+      width: 49%;
+      padding-bottom: 49%;
+      margin-bottom: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+
+      .textbox {
+        @include pos-center;
+        width: 100%;
+        text-align: center;
+
+        .title {
+          margin-bottom: 8px;
+        }
+
+        .caption {
+          @include text-style(13, $secondary);
+          width: 80%;
+          margin: 0 auto;
+        }
+      }
+
+      .member {
+        @include text-style(12, $primary);
+        @include pos-center-x;
+        bottom: 4px;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}
