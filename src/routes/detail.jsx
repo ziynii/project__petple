@@ -11,8 +11,6 @@ const Detail = ({ user }) => {
   const commentRef = useRef();
   const [comments, setCommnets] = useState([]);
 
-  console.log(postId.id);
-
   const onClickLike = () => {
     db.collection('freePosts')
       .where('likes', 'array-contains', user.uid)
@@ -94,6 +92,7 @@ const Detail = ({ user }) => {
       </div>
 
       <div className="comment-box">
+        <p className="comment-total">댓글 {comments.length}개</p>
         <ul className="comment-list">
           {comments.map((comment, i) => {
             return <Comment comment={comment} key={i} />;
