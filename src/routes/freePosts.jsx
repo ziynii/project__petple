@@ -32,7 +32,7 @@ const FreePosts = ({ user }) => {
   return (
     <div className="main-content free">
       <div className="align-box-top">
-        <div className="conent-title">
+        <div className="content-title">
           <h3 className="title">놀이터</h3>
           <p>모두가 자유롭게 소통하는 공간입니다</p>
         </div>
