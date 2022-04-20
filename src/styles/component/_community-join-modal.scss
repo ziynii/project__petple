@@ -1,0 +1,39 @@
+.join-modal {
+  @include pos-center;
+	@include column-flexbox;
+  width: 360px;
+  height: 180px;
+  padding: 16px;
+  z-index: $modal-level;
+  background-color: $white;
+	border-radius: 8px;
+	border: 4px solid $main;
+
+	p {
+		@include text-style(18, $primary);
+		margin-bottom: 8px;
+		font-weight: 700;
+	}
+
+	span {
+		@include text-style(13, $secondary);
+		margin-bottom: 16px;
+	}
+
+	button {
+		@include text-style(16);
+		padding: 8px 16px;
+		border-radius: 4px;
+
+		&.join-button {
+			margin-right: 8px;
+			color: $white;
+			background-color: $main;
+		}
+
+		&.cancle-button {
+			color: $main;
+			background-color: $sub;
+		}
+	}
+}
