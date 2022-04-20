@@ -43,11 +43,14 @@
       }
     }
 
+    .post-reaction-wrap {
+      margin-bottom: 24px;
+    }
+
     .my-reaction {
       @include flexbox;
       width: 100%;
       padding-bottom: 24px;
-      border-bottom: 1px solid $border;
 
       & > button {
         @include flexbox;
@@ -67,6 +70,12 @@
     }
 
     .comment-box {
+      .comment-total {
+				@include text-style(14, $dark);
+				font-weight: 700;
+        border-bottom: 1px solid $border;
+      }
+
       .comment-list {
         margin-bottom: 24px;
 
@@ -104,35 +113,6 @@
               @include text-style(12, $secondary);
             }
           }
-        }
-      }
-    }
-
-    .comment-form-wrap {
-      .comment-title {
-        @include text-style(14, $primary);
-        font-weight: 700;
-      }
-
-      .comment-form {
-        @include flexbox(start);
-        width: 100%;
-
-        .comment-input {
-          flex-grow: 1;
-          padding: 8px;
-          margin-right: 8px;
-          border: 1px solid $border;
-          border-radius: 4px;
-        }
-
-        .submit-button {
-          @include text-style(14, $main);
-          width: 60px;
-          padding: 8px;
-					font-weight: 700;
-          background-color: $sub;
-          border-radius: 4px;
         }
       }
     }
