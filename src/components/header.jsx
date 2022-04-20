@@ -7,7 +7,7 @@ const Header = ({ showHeaderAndNav }) => {
       {showHeaderAndNav ? (
         <header className="header">
           <h1 className="logo">
-            <Link to="/main">
+            <Link to="/home">
               <img src="/logo.svg" alt="petple 로고" />
             </Link>
           </h1>
