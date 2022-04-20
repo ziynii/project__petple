@@ -2,10 +2,6 @@
   @include flexbox(between);
   @include text-style(13, $primary);
   margin-bottom: 24px;
-	
-  .total-like {
-    margin-right: 16px;
-  }
 
   .total-like {
     .fa-heart {
