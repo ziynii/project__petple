@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 
 const Join = ({ setShowHeaderAndNav }) => {
   const navigate = useNavigate();
@@ -18,6 +18,11 @@ const Join = ({ setShowHeaderAndNav }) => {
       )
       .then((result) => {
         {
+          db.collection('user').doc(result.user.uid).set({
+            name: nameRef.current.value,
+            email: emailRef.current.value,
+            image: '',
+          });
           result.user.updateProfile({ displayName: nameRef.current.value });
           navigate('/login');
         }
