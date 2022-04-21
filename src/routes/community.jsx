@@ -1,10 +1,44 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import JoinCommunityModal from '../components/joinCommunityModal';
 import { db } from '../firebase';
 
-const Community = (props) => {
+const Community = ({ user }) => {
   const [communities, setCommunities] = useState([]);
-  const [isModal, setIsModal] = useState(true);
+  const [isModal, setIsModal] = useState(false);
+  const [selectCommunity, setSelectCommunity] = useState('');
+  const [docId, setDocId] = useState('');
+  const navigate = useNavigate();
+
+  console.log(docId);
+
+  const onClickItem = (community) => {
+    db.collection('community')
+      .where('title', '==', community.title)
+      .get()
+      .then(
+        (result) =>
+          result.forEach((doc) => {
+            setDocId(doc.id);
+          }),
+        db
+          .collection('community')
+          .where('member', 'array-contains', user.uid)
+          .get()
+          .then((result) => {
+            let titleArray = [];
+            result.forEach((doc) => {
+              titleArray.push(doc.data().title);
+            });
+            if (titleArray.includes(community.title)) {
+              navigate(`/community/${docId}`);
+            } else {
+              setSelectCommunity(community.title);
+              setIsModal(true);
+            }
+          })
+      );
+  };
 
   useEffect(() => {
     db.collection('community')
@@ -31,6 +65,7 @@ const Community = (props) => {
           return (
             <li
               key={i}
+              onClick={() => onClickItem(community)}
               className="community-item"
               style={{
                 background: `linear-gradient(to top right, ${community.color}, #fff)`,
@@ -42,14 +77,21 @@ const Community = (props) => {
               </div>
 
               <p className="member">
-                <strong>26명</strong>의 펫플러가 함께하고 있어요!
+                <strong>{community.member.length}명</strong>의 펫플러가 함께하고
+                있어요!
               </p>
             </li>
           );
         })}
       </ul>
 
-      {isModal ? <JoinCommunityModal /> : null}
+      {isModal ? (
+        <JoinCommunityModal
+          setIsModal={setIsModal}
+          selectCommunity={selectCommunity}
+          user={user}
+        />
+      ) : null}
     </div>
   );
 };
