@@ -13,6 +13,7 @@ import Mypage from './routes/mypage';
 import { auth } from './firebase';
 import Detail from './routes/detail';
 import Community from './routes/community';
+import CommunityChat from './routes/communityChat';
 
 function App() {
   const [showHeaderAndNav, setShowHeaderAndNav] = useState(true);
@@ -56,6 +57,7 @@ function App() {
         <Route path="/mypage" element={<Mypage user={isUser} />} />
         <Route path="/detail/:id" element={<Detail user={isUser} />} />
         <Route path="/community" element={<Community user={isUser} />} />
+        <Route path="/community/:id" element={<CommunityChat />} />
       </Routes>
 
       <FooterNav showHeaderAndNav={showHeaderAndNav} />
