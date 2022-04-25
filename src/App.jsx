@@ -57,7 +57,10 @@ function App() {
         <Route path="/mypage" element={<Mypage user={isUser} />} />
         <Route path="/detail/:id" element={<Detail user={isUser} />} />
         <Route path="/community" element={<Community user={isUser} />} />
-        <Route path="/community/:id" element={<CommunityChat />} />
+        <Route
+          path="/community/:id"
+          element={<CommunityChat user={isUser} />}
+        />
       </Routes>
 
       <FooterNav showHeaderAndNav={showHeaderAndNav} />
