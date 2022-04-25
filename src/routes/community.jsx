@@ -25,7 +25,7 @@ const Community = ({ user }) => {
     <div className="main-content community">
       <div className="content-title">
         <h3 className="title">커뮤니티</h3>
-        <p>커뮤니티에 가입해 다양한 정보를 나눠보세요</p>
+        <p>채팅방 형식의 커뮤니티에서 자유롭게 대화를 나눠보세요 🐶 </p>
       </div>
 
       <ul className="community-list">
