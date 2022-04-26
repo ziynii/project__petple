@@ -3,17 +3,21 @@ import { db } from '../firebase';
 
 const ChatForm = ({ user, docId }) => {
   const chatRef = useRef();
+
   const today = new Date();
+  const date = new Date(+new Date() + 3240 * 10000).toISOString().split('T')[0];
   const hours = ('0' + today.getHours()).slice(-2);
   const minutes = ('0' + today.getMinutes()).slice(-2);
   const time = hours + ':' + minutes;
+
 
   const onSubmitChat = (event) => {
     event.preventDefault();
 
     db.collection('messages').add({
       content: chatRef.current.value,
-      date: time,
+      date: date,
+      time: time,
       uid: user.uid,
       name: user.displayName,
       chatroom: docId.id,
