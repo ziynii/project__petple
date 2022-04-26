@@ -13,7 +13,7 @@ const Message = ({ message, user }) => {
         <p className="user-name">{message.name}</p>
         <p className="text">{message.content}</p>
       </div>
-      <div className="date">{message.date}</div>
+      <div className="time">{message.time}</div>
     </li>
   );
 };
