@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import Message from '../components/message';
 import { db } from '../firebase';
 
 const CommunityChat = ({ user }) => {
@@ -25,7 +26,7 @@ const CommunityChat = ({ user }) => {
     });
 
     chatRef.current.value = '';
-		chatRef.current.focus();
+    chatRef.current.focus();
   };
 
   useEffect(() => {
@@ -64,26 +65,7 @@ const CommunityChat = ({ user }) => {
               else return -1;
             })
             .map((message, i) => {
-              return (
-                <li
-                  className={
-                    'chat-item' + (message.uid == user.uid ? ' mine' : '')
-                  }
-                  key={i}
-                >
-                  <div
-                    className="user-image"
-                    style={{
-                      backgroundImage: `url("https://via.placeholder.com/350")`,
-                    }}
-                  ></div>
-                  <div className="chat-align-box">
-                    <p className="user-name">{message.name}</p>
-                    <p className="text">{message.content}</p>
-                  </div>
-                  <div className="date">{message.date}</div>
-                </li>
-              );
+              return <Message message={message} user={user} key={i} />;
             })}
         </ul>
 

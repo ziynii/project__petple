@@ -14,69 +14,6 @@
       }
     }
 
-    .chat-item {
-      @include flexbox(start, start);
-      width: 100%;
-      margin-bottom: 24px;
-      float: left;
-
-      &:first-child {
-        margin-top: 16px;
-      }
-
-      .user-image {
-        width: 40px;
-        height: 40px;
-        margin-right: 16px;
-        border-radius: 50%;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center center;
-      }
-
-      .user-name {
-        @include text-style(12);
-        margin-bottom: 4px;
-      }
-
-      .text {
-        @include text-style(14, $primary);
-        padding: 8px 16px;
-        margin-right: 8px;
-        background-color: $white;
-        border-radius: 8px 8px 8px 0;
-        box-shadow: $dropdown-shadow;
-      }
-
-      .date {
-        @include text-style(12, $secondary);
-				align-self: flex-end;
-      }
-
-      &.mine {
-        flex-direction: row-reverse;
-        float: right;
-
-        .user-image {
-          margin-right: 0;
-        }
-
-				.user-name {
-					display: none;
-				}
-
-        .text {
-          margin-right: 16px;
-          color: $white;
-          background-color: $main;
-          border-radius: 8px 8px 0 8px;
-        }
-
-        .date {
-          margin-right: 8px;
-        }
-      }
-    }
 
     .chat-form {
       @include flexbox(between, start);
