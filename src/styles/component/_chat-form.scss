@@ -1,0 +1,18 @@
+.chat-form {
+  @include flexbox(between, start);
+  width: 100%;
+  height: calc(140px - 80px);
+  border-top: 1px solid $border;
+
+  .chat-input {
+    flex-grow: 1;
+    height: 100%;
+    padding: 8px 16px;
+  }
+
+  .submit-button {
+    width: 60px;
+    height: 100%;
+    background-color: $sub;
+  }
+}
