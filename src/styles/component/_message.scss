@@ -2,11 +2,14 @@
   @include flexbox(start, start);
   width: 100%;
   margin-bottom: 24px;
-  float: left;
 
   &:first-child {
     margin-top: 16px;
   }
+
+	&:last-child {
+		margin-bottom: 0;
+	}
 
   .user-image {
     width: 40px;
@@ -39,7 +42,6 @@
 
   &.mine {
     flex-direction: row-reverse;
-    float: right;
 
     .user-image {
       margin-right: 0;
