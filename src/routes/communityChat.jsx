@@ -46,8 +46,7 @@ const CommunityChat = ({ user }) => {
   useEffect(() => {
     db.collection('messages')
       .where('chatroom', '==', docId.id)
-      .get()
-      .then((result) => {
+      .onSnapshot((result) => {
         let messagesArray = [];
         result.forEach((doc) => {
           messagesArray.push(doc.data());
@@ -63,12 +62,12 @@ const CommunityChat = ({ user }) => {
       </div>
 
       <div className="chat-content">
-        {sortDate.map((date) => {
+        {sortDate.map((date, i) => {
           let todayMessages = messages.filter((message) => {
             return message.date == date;
           });
           return (
-            <ul className="chat-list">
+            <ul className="chat-list" key={i}>
               <li className="today"><p>{date}</p></li>
 
               {sortTime(todayMessages).map((message, i) => {
