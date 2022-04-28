@@ -24,6 +24,9 @@ function App() {
       if (user) {
         localStorage.setItem('user', JSON.stringify(user));
         setIsUser(JSON.parse(localStorage.getItem('user')));
+      } else if (!user) {
+        localStorage.removeItem('user');
+				setIsUser(null)
       }
     });
   }, []);
@@ -51,7 +54,9 @@ function App() {
         />
         <Route
           path="/home"
-          element={<Home setShowHeaderAndNav={setShowHeaderAndNav} />}
+          element={
+            <Home setShowHeaderAndNav={setShowHeaderAndNav} user={isUser} />
+          }
         />
         <Route path="/free" element={<FreePosts user={isUser} />} />
         <Route path="/mypage" element={<Mypage user={isUser} />} />
