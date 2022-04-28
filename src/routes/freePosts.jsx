@@ -14,6 +14,7 @@ const FreePosts = ({ user }) => {
 
   useEffect(() => {
     db.collection('freePosts')
+      .orderBy('date','desc')
       .get()
       .then((result) => {
         let postsArray = [];
