@@ -1,17 +1,71 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { auth } from '../firebase';
+import { auth, db } from '../firebase';
 
-const Mypage = () => {
+const Mypage = ({ user }) => {
   const navigate = useNavigate();
   const [tabName, setTabName] = useState('write');
-  console.log(tabName);
+  const [likes, setLikes] = useState([]);
+  const [myPosts, setMyPosts] = useState([]);
+  const [myCommunity, setMyCommunity] = useState([]);
+  const [myPostsDocId, setMyPostsDocId] = useState([]);
+  const [likesDocId, setLikesDocId] = useState([]);
+  const [communityDocId, setCommunityDocId] = useState([]);
 
   const handleLogout = () => {
     auth.signOut();
     localStorage.removeItem('user');
     navigate('/');
   };
+
+  useEffect(() => {
+    db.collection('freePosts')
+      .where('uid', '==', user.uid)
+      .get()
+      .then((result) => {
+        let myPostsArray = [];
+        let docIdArray = [];
+        result.forEach((doc) => {
+          myPostsArray.push(doc.data());
+          docIdArray.push(doc.id);
+        });
+        setMyPosts(myPostsArray);
+        setMyPostsDocId(docIdArray);
+      });
+  }, []);
+
+  useEffect(() => {
+    db.collection('freePosts')
+      .where('likes', 'array-contains', user.uid)
+      .get()
+      .then((result) => {
+        let myLikesArray = [];
+        let docIdArray = [];
+        result.forEach((doc) => {
+          myLikesArray.push(doc.data());
+          docIdArray.push(doc.id);
+        });
+        setLikes(myLikesArray);
+        setLikesDocId(docIdArray);
+      });
+  }, []);
+
+  useEffect(() => {
+    db.collection('community')
+      .where('member', 'array-contains', user.uid)
+      .get()
+      .then((result) => {
+        let myCommunityArray = [];
+        let docIdArray = [];
+        result.forEach((doc) => {
+          myCommunityArray.push(doc.data());
+          docIdArray.push(doc.id);
+        });
+        setMyCommunity(myCommunityArray);
+        setCommunityDocId(docIdArray);
+      });
+  }, []);
+
   return (
     <div className="main-content mypage">
       <h3 className="content-title">마이페이지</h3>
@@ -27,7 +81,7 @@ const Mypage = () => {
         </div>
 
         <div className="user-right-box">
-          <h4 className="user-name">유저네임님</h4>
+          <h4 className="user-name">{user.displayName}님</h4>
           <button type="button" className="profile-change-button">
             프로필 수정
           </button>
@@ -48,50 +102,75 @@ const Mypage = () => {
             className="tab-button"
             onClick={() => setTabName('write')}
           >
-            내가쓴 글 <br /> 0개
+            <strong>내가쓴 글 </strong>
+            <br /> {myPosts.length}개
           </button>
           <button
             type="button"
             className="tab-button"
             onClick={() => setTabName('like')}
           >
-            좋아한 글 <br /> 0개
+            <strong>좋아한 글</strong> <br /> {likes.length}개
           </button>
           <button
             type="button"
             className="tab-button"
             onClick={() => setTabName('community')}
           >
-            내 모임 <br /> 0개
+            <strong>내 모임</strong> <br /> {myCommunity.length}개
           </button>
         </div>
 
         {tabName === 'write' ? (
           <ul className="mypost-list">
-            <li className="mypost-item">
-              <p>저희 메시 예쁘지 않나요</p>
-              <span className="author">메시누나</span>
-              <span className="date">2022-04-19</span>
-            </li>
+            {myPosts.map((post, i) => {
+              return (
+                <li
+                  className="mypost-item"
+                  onClick={() => navigate(`/detail/${myPostsDocId[i]}`)}
+                  key={i}
+                >
+                  <p>{post.content}</p>
+                  <span className="author">{post.username}</span>
+                  <span className="date">{post.date}</span>
+                </li>
+              );
+            })}
           </ul>
         ) : null}
 
         {tabName === 'like' ? (
           <ul className="mypost-list">
-            <li className="mypost-item">
-              <p>저희 곰순이 예쁘지 않나요</p>
-              <span className="author">곰순언니</span>
-              <span className="date">2022-04-19</span>
-            </li>
+            {likes.map((post, i) => {
+              return (
+                <li
+                  className="mypost-item"
+                  onClick={() => navigate(`/detail/${likesDocId[i]}`)}
+                  key={i}
+                >
+                  <p>{post.content}</p>
+                  <span className="author">{post.username}</span>
+                  <span className="date">{post.date}</span>
+                </li>
+              );
+            })}
           </ul>
         ) : null}
 
         {tabName === 'community' ? (
           <ul className="mypost-list">
-            <li className="mypost-item">
-              <p>치와와 사랑해</p>
-              <span>멤버수 : 26명</span>
-            </li>
+            {myCommunity.map((community, i) => {
+              return (
+                <li
+                  className="mypost-item"
+                  onClick={() => navigate(`/community/${communityDocId[i]}`)}
+                  key={i}
+                >
+                  <p>{community.title}</p>
+                  <span className="author">{community.caption}</span>
+                </li>
+              );
+            })}
           </ul>
         ) : null}
       </div>
