@@ -41,9 +41,8 @@ const Detail = ({ user }) => {
 
   useEffect(() => {
     db.collection('comments')
-      .where('postId', '==', postId.id)
-      .get()
-      .then((result) => {
+      .where('postId', '==', postId.id).orderBy('date')
+      .onSnapshot((result) => {
         let commentsArray = [];
 
         result.forEach((doc) => {

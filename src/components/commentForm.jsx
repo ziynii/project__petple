@@ -2,7 +2,8 @@ import React from 'react';
 import { db } from '../firebase';
 
 const CommentForm = ({ commentRef, user, postId }) => {
-  const onSubmit = () => {
+  const onSubmit = (event) => {
+    event.preventDefault();
     db.collection('comments').add({
       postId: postId.id,
       content: commentRef.current.value,
