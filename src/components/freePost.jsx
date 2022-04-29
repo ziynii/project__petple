@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PostReaction from './postReaction';
 
-const FreePost = ({ post, doc }) => {
+const FreePost = ({ post, doc, user }) => {
   const [isImageFile, setIsImageFile] = useState(false);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const FreePost = ({ post, doc }) => {
         </div>
       </Link>
 
-      <PostReaction post={post} />
+      <PostReaction post={post} user={user}/>
     </li>
   );
 };

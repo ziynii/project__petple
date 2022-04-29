@@ -35,13 +35,13 @@ const Detail = ({ user }) => {
   useEffect(() => {
     db.collection('freePosts')
       .doc(postId.id)
-      .get()
-      .then((result) => setPost(result.data()));
+      .onSnapshot((result) => setPost(result.data()));
   }, []);
 
   useEffect(() => {
     db.collection('comments')
-      .where('postId', '==', postId.id).orderBy('date')
+      .orderBy('date')
+      .where('postId', '==', postId.id)
       .onSnapshot((result) => {
         let commentsArray = [];
 
@@ -73,7 +73,7 @@ const Detail = ({ user }) => {
         ) : null}
       </div>
 
-      <PostReaction post={post} />
+      <PostReaction post={post} user={user} />
 
       <div className="my-reaction">
         <button type="button" className="is-like" onClick={onClickLike}>

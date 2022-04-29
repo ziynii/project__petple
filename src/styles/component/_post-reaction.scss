@@ -10,7 +10,9 @@
     }
 
     &.is-active {
-      color: $main;
+      svg {
+        color: $main;
+      }
     }
   }
 

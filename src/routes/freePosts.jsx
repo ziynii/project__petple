@@ -49,7 +49,7 @@ const FreePosts = ({ user }) => {
 
       <ul className="post-list">
         {posts?.map((post, i) => {
-          return <FreePost post={post} key={i} doc={isDoc[i]} />;
+          return <FreePost post={post} key={i} doc={isDoc[i]} user={user}/>;
         })}
       </ul>
 
