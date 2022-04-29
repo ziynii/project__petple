@@ -11,6 +11,7 @@ const CommentForm = ({ commentRef, user, postId }) => {
       uid: user.uid,
       name: user.displayName,
     });
+		commentRef.current.value = ''
   };
 
   return (
