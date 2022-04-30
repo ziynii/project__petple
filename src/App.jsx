@@ -14,6 +14,7 @@ import { auth } from './firebase';
 import Detail from './routes/detail';
 import Community from './routes/community';
 import CommunityChat from './routes/communityChat';
+import MypageEdit from './routes/mypageEdit';
 
 function App() {
   const [showHeaderAndNav, setShowHeaderAndNav] = useState(true);
@@ -60,6 +61,7 @@ function App() {
         />
         <Route path="/free" element={<FreePosts user={isUser} />} />
         <Route path="/mypage" element={<Mypage user={isUser} />} />
+        <Route path="/mypage/edit" element={<MypageEdit user={isUser } />} />
         <Route path="/detail/:id" element={<Detail user={isUser} />} />
         <Route path="/community" element={<Community user={isUser} />} />
         <Route

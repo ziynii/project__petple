@@ -82,7 +82,7 @@ const Mypage = ({ user }) => {
 
         <div className="user-right-box">
           <h4 className="user-name">{user.displayName}님</h4>
-          <button type="button" className="profile-change-button">
+          <button type="button" className="profile-change-button" onClick={() => navigate('/mypage/edit')}>
             프로필 수정
           </button>
           <button
