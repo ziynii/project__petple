@@ -4,6 +4,12 @@
   .community-list {
     @include flexbox(between);
     flex-wrap: wrap;
+    height: calc(100% - 81px);
     padding: 24px 16px;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
