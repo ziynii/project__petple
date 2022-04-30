@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 
-const Mypage = ({ user }) => {
+const Mypage = ({ user, userImage }) => {
   const navigate = useNavigate();
   const [tabName, setTabName] = useState('write');
   const [likes, setLikes] = useState([]);
@@ -75,14 +75,20 @@ const Mypage = ({ user }) => {
           <div
             className="user-image"
             style={{
-              backgroundImage: `url("https://via.placeholder.com/350")`,
+              backgroundImage: `url(${
+                userImage == '' ? '/imgs/default-image.png' : userImage
+              })`,
             }}
           ></div>
         </div>
 
         <div className="user-right-box">
           <h4 className="user-name">{user.displayName}님</h4>
-          <button type="button" className="profile-change-button" onClick={() => navigate('/mypage/edit')}>
+          <button
+            type="button"
+            className="profile-change-button"
+            onClick={() => navigate('/mypage/edit')}
+          >
             프로필 수정
           </button>
           <button

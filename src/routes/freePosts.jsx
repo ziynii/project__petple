@@ -3,7 +3,7 @@ import FreePost from '../components/freePost';
 import UploadPostModal from '../components/uploadPostModal';
 import { db } from '../firebase';
 
-const FreePosts = ({ user }) => {
+const FreePosts = ({ user, userImage }) => {
   const [isUpload, setIsUpload] = useState(false);
   const [posts, setPosts] = useState([]);
   const [isDoc, setIsDoc] = useState({});
@@ -49,7 +49,7 @@ const FreePosts = ({ user }) => {
 
       <ul className="post-list">
         {posts?.map((post, i) => {
-          return <FreePost post={post} key={i} doc={isDoc[i]} user={user}/>;
+          return <FreePost post={post} key={i} doc={isDoc[i]} user={user} userImage={userImage}/>;
         })}
       </ul>
 

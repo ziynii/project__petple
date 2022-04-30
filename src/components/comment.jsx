@@ -1,13 +1,15 @@
 import React from 'react';
 
-const Comment = ({comment}) => {
+const Comment = ({ comment, userImage }) => {
   return (
     <li className="comment-item">
       <div className="comment-user">
         <div
           className="user-image"
           style={{
-            backgroundImage: `url("https://via.placeholder.com/350")`,
+            backgroundImage: `url(${
+              userImage == '' ? '/imgs/default-image.png' : userImage
+            })`,
           }}
         ></div>
         <strong className="user-name">{comment.name}</strong>

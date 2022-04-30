@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PostReaction from './postReaction';
 
-const FreePost = ({ post, doc, user }) => {
+const FreePost = ({ post, doc, user, userImage }) => {
   const [isImageFile, setIsImageFile] = useState(false);
 
   useEffect(() => {
@@ -18,7 +18,11 @@ const FreePost = ({ post, doc, user }) => {
       <div className="post-info">
         <div
           className="author-image"
-          style={{ backgroundImage: `url("https://via.placeholder.com/350")` }}
+          style={{
+            backgroundImage: `url(${
+              userImage == '' ? '/imgs/default-image.png' : userImage
+            })`,
+          }}
         ></div>
         <strong className="author-name">{post.username}</strong>
       </div>
@@ -35,7 +39,7 @@ const FreePost = ({ post, doc, user }) => {
         </div>
       </Link>
 
-      <PostReaction post={post} user={user}/>
+      <PostReaction post={post} user={user} />
     </li>
   );
 };

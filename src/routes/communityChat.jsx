@@ -4,7 +4,7 @@ import ChatForm from '../components/chatForm';
 import Message from '../components/message';
 import { db } from '../firebase';
 
-const CommunityChat = ({ user }) => {
+const CommunityChat = ({ user, userImage }) => {
   const docId = useParams();
   const today = new Date();
   const [community, setCommunity] = useState({});
@@ -68,10 +68,12 @@ const CommunityChat = ({ user }) => {
           });
           return (
             <ul className="chat-list" key={i}>
-              <li className="today"><p>{date}</p></li>
+              <li className="today">
+                <p>{date}</p>
+              </li>
 
               {sortTime(todayMessages).map((message, i) => {
-                return <Message message={message} user={user} key={i} />;
+                return <Message message={message} user={user} key={i} userImage={userImage}/>;
               })}
             </ul>
           );

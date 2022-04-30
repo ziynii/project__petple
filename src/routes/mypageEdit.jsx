@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MypageEdit = ({ user }) => {
+const MypageEdit = ({ user, userImage }) => {
   console.log(user);
 
   return (
@@ -12,7 +12,7 @@ const MypageEdit = ({ user }) => {
         <div
           className="preview-image"
           style={{
-            backgroundImage: `url("https://via.placeholder.com/350")`,
+            backgroundImage: `url("/imgs/default-image.png")`,
           }}
         ></div>
         <form className="image-form">

@@ -1,13 +1,15 @@
 import React from 'react';
 
-const Message = ({ message, user }) => {
+const Message = ({ message, user, userImage }) => {
   return (
     <li className={'chat-item' + (message.uid == user.uid ? ' mine' : '')}>
       <div
         className="user-image"
         style={{
-          backgroundImage: `url("https://via.placeholder.com/350")`,
-        }}
+					backgroundImage: `url(${
+						userImage == '' ? '/imgs/default-image.png' : userImage
+					})`,
+				}}
       ></div>
       <div className="chat-align-box">
         <p className="user-name">{message.name}</p>
