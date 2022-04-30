@@ -1,0 +1,43 @@
+.upload-modal {
+  &.create-community {
+		height: 400px;
+
+    .create-form {
+      .title,
+      .caption {
+        @include text-style(14, $primary);
+        width: 100%;
+        padding: 8px;
+        border: 1px solid $main;
+        border-radius: 4px;
+      }
+
+      .title {
+        margin-bottom: 8px;
+      }
+    }
+
+    .color-select {
+      .color-caption {
+        @include text-style(14);
+        margin-bottom: 16px;
+      }
+
+      .color-list {
+        @include flexbox(between);
+        width: 200px;
+        margin: 0 auto;
+
+        .color-item {
+          width: 32px;
+          height: 32px;
+					cursor: pointer;
+
+          &.is-active {
+            border: 2px solid $main;
+          }
+        }
+      }
+    }
+  }
+}
