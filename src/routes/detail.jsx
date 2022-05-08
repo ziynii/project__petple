@@ -5,7 +5,7 @@ import CommentForm from '../components/commentForm';
 import PostReaction from '../components/postReaction';
 import { db } from '../firebase';
 
-const Detail = ({ user, userImage }) => {
+const Detail = ({ user }) => {
   const postId = useParams();
   const [post, setPost] = useState();
   const commentRef = useRef();
@@ -60,7 +60,9 @@ const Detail = ({ user, userImage }) => {
           className="author-image"
           style={{
             backgroundImage: `url(${
-              userImage == '' ? '/imgs/default-image.png' : userImage
+              post?.userImage == ''
+                ? '/imgs/default-image.png'
+                : post?.userImage
             })`,
           }}
         ></div>
@@ -98,7 +100,7 @@ const Detail = ({ user, userImage }) => {
         <p className="comment-total">댓글 {comments.length}개</p>
         <ul className="comment-list">
           {comments.map((comment, i) => {
-            return <Comment comment={comment} key={i} userImage={userImage} />;
+            return <Comment comment={comment} key={i} />;
           })}
         </ul>
       </div>

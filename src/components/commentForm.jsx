@@ -10,8 +10,9 @@ const CommentForm = ({ commentRef, user, postId }) => {
       date: new Date(+new Date() + 3240 * 10000).toISOString().split('T')[0],
       uid: user.uid,
       name: user.displayName,
+      userImage: user.photoURL,
     });
-		commentRef.current.value = ''
+    commentRef.current.value = '';
   };
 
   return (

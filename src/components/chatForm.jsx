@@ -19,6 +19,7 @@ const ChatForm = ({ user, docId, today }) => {
       uid: user.uid,
       name: user.displayName,
       chatroom: docId.id,
+			userImage : user.photoURL,
     });
 
     chatRef.current.value = '';

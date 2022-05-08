@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Comment = ({ comment, userImage }) => {
+const Comment = ({ comment }) => {
   return (
     <li className="comment-item">
       <div className="comment-user">
@@ -8,7 +8,9 @@ const Comment = ({ comment, userImage }) => {
           className="user-image"
           style={{
             backgroundImage: `url(${
-              userImage == '' ? '/imgs/default-image.png' : userImage
+              comment.userImage == ''
+                ? '/imgs/default-image.png'
+                : comment.userImage
             })`,
           }}
         ></div>

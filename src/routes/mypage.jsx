@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 
-const Mypage = ({ user, userImage }) => {
+const Mypage = ({ user }) => {
   const navigate = useNavigate();
   const [tabName, setTabName] = useState('write');
   const [likes, setLikes] = useState([]);
@@ -76,7 +76,7 @@ const Mypage = ({ user, userImage }) => {
             className="user-image"
             style={{
               backgroundImage: `url(${
-                userImage == '' ? '/imgs/default-image.png' : userImage
+                user.photoURL == null ? '/imgs/default-image.png' : user.photoURL
               })`,
             }}
           ></div>

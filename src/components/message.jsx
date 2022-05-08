@@ -7,7 +7,7 @@ const Message = ({ message, user, userImage }) => {
         className="user-image"
         style={{
 					backgroundImage: `url(${
-						userImage == '' ? '/imgs/default-image.png' : userImage
+						message.userImage == null ? '/imgs/default-image.png' : message.userImage
 					})`,
 				}}
       ></div>

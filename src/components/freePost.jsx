@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PostReaction from './postReaction';
 
-const FreePost = ({ post, doc, user, userImage }) => {
+const FreePost = ({ post, doc, user }) => {
   const [isImageFile, setIsImageFile] = useState(false);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const FreePost = ({ post, doc, user, userImage }) => {
           className="author-image"
           style={{
             backgroundImage: `url(${
-              userImage == '' ? '/imgs/default-image.png' : userImage
+              post.userImage == '' ? '/imgs/default-image.png' : post.userImage
             })`,
           }}
         ></div>
