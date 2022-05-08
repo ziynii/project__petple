@@ -1,6 +1,6 @@
 .upload-modal {
   &.create-community {
-		height: 400px;
+    height: 400px;
 
     .create-form {
       .title,
@@ -31,13 +31,24 @@
         .color-item {
           width: 32px;
           height: 32px;
-					cursor: pointer;
+          cursor: pointer;
 
           &.is-active {
             border: 2px solid $main;
           }
         }
       }
+    }
+
+    .close-button {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+
+			.fa-xmark {
+				font-size: 24px;
+				color: $main;
+			}
     }
   }
 }

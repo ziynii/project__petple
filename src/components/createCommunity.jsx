@@ -84,6 +84,10 @@ const CreateCommunity = ({ user, setCreateCommunity }) => {
         <button className="submit-button" onClick={onSubmit}>
           완료
         </button>
+
+        <button className="close-button" onClick={() => setCreateCommunity(false)}>
+          <i className="fa-solid fa-xmark"></i>
+        </button>
       </div>
       <Overlay />
     </>
