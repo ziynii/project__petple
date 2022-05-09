@@ -1,0 +1,55 @@
+.home {
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .main-list-box {
+    padding: 24px 16px;
+
+    .list-align-box {
+      @include flexbox(between);
+    }
+
+    .main-list-title {
+      @include text-style(18, $primary);
+      margin-bottom: 16px;
+
+      .fa-angle-right {
+        @include text-style(13, $primary);
+        margin-left: 24px;
+      }
+    }
+
+    .main-item {
+      @include text-style(13, $secondary);
+      padding: 16px 0;
+      border-bottom: 1px solid $border;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      .content {
+        @include text-style(16, $primary);
+        margin-bottom: 4px;
+      }
+
+      .author {
+        margin-right: 24px;
+      }
+
+      .likes {
+        position: relative;
+
+        strong {
+          position: absolute;
+          right: 12px;
+          top: 0.5px;
+          color: rgb(239, 105, 105);
+        }
+      }
+    }
+  }
+}
