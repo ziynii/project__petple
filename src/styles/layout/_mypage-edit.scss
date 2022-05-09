@@ -27,7 +27,7 @@
     }
 
     .name-input {
-      @include text-style(14, $white);
+      @include text-style(14, $primary);
       flex-grow: 1;
       padding: 8px;
       margin-right: 16px;
