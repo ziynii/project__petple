@@ -1,0 +1,26 @@
+.carousel-box {
+  padding-top: 24px;
+
+  .carousel-item {
+    width: 100%;
+
+    img {
+      width: 95%;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+  }
+
+  .slick-dots {
+    bottom: 8px;
+
+    li {
+      margin: 0 3px;
+
+      button::before {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+}
