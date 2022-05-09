@@ -12,6 +12,9 @@
       height: 36px;
       margin-right: 8px;
       border-radius: 50%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
     }
 
     .author-name {
@@ -20,7 +23,7 @@
   }
 
   .text {
-		@include text-style(16, $primary);
+    @include text-style(16, $primary);
     margin-bottom: 24px;
   }
 
@@ -33,6 +36,4 @@
     background-size: cover;
     border-radius: 8px;
   }
-
-  
 }
