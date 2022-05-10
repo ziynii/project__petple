@@ -1,5 +1,11 @@
 .edit-post {
-	.notice {
-		@include text-style(13, $tertiary);
-	}
+  .notice {
+    @include text-style(13, $tertiary);
+  }
+
+  .content-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid $border;
+  }
 }

@@ -1,0 +1,40 @@
+.modal {
+  @include pos-center;
+  @include column-flexbox(between);
+  width: 80%;
+  height: 360px;
+  padding: 24px;
+  z-index: $modal-level;
+  text-align: center;
+  background-color: $white;
+
+  .upload-form {
+    width: 100%;
+  }
+
+  .title {
+    @include text-style(18, $main);
+    width: 100%;
+    padding: 8px 0;
+  }
+
+  .submit-button {
+    @include text-style(18, $sub);
+    width: 100%;
+    height: 48px;
+    font-weight: 700;
+    background-color: $main;
+    border-radius: 8px;
+  }
+
+  .close-button {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+
+    .fa-xmark {
+      font-size: 24px;
+      color: $main;
+    }
+  }
+}
