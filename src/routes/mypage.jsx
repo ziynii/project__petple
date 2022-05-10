@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 
-const Mypage = ({ user }) => {
+const Mypage = () => {
   const navigate = useNavigate();
   const [tabName, setTabName] = useState('write');
   const [likes, setLikes] = useState([]);
@@ -11,6 +11,7 @@ const Mypage = ({ user }) => {
   const [myPostsDocId, setMyPostsDocId] = useState([]);
   const [likesDocId, setLikesDocId] = useState([]);
   const [communityDocId, setCommunityDocId] = useState([]);
+  const user = JSON.parse(localStorage.getItem('user'));
 
   const handleLogout = () => {
     auth.signOut();
@@ -20,7 +21,7 @@ const Mypage = ({ user }) => {
 
   useEffect(() => {
     db.collection('freePosts')
-      .where('uid', '==', user.uid)
+      .where('uid', '==', user?.uid)
       .get()
       .then((result) => {
         let myPostsArray = [];
@@ -76,14 +77,16 @@ const Mypage = ({ user }) => {
             className="user-image"
             style={{
               backgroundImage: `url(${
-                user.photoURL == null ? '/imgs/default-image.png' : user.photoURL
+                user?.photoURL == null
+                  ? '/imgs/default-image.png'
+                  : user.photoURL
               })`,
             }}
           ></div>
         </div>
 
         <div className="user-right-box">
-          <h4 className="user-name">{user.displayName}님</h4>
+          <h4 className="user-name">{user?.displayName}님</h4>
           <button
             type="button"
             className="profile-change-button"
