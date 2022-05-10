@@ -1,4 +1,6 @@
 .comment-form-wrap {
+	padding: 0 16px;
+	
   .comment-title {
     @include text-style(14, $primary);
     font-weight: 700;
