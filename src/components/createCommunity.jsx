@@ -19,7 +19,7 @@ const CreateCommunity = ({ user, setCreateCommunity }) => {
 
   return (
     <>
-      <div className="upload-modal create-community">
+      <div className="modal create-community">
         <h4 className="title">커뮤니티 생성</h4>
 
         <form className="create-form">

@@ -55,7 +55,7 @@ const UploadPostModal = ({ setIsUpload, user }) => {
 
   return (
     <>
-      <div className="upload-modal">
+      <div className="modal upload-modal">
         <h4 className="title">글쓰기</h4>
 
         <form className="upload-form">

@@ -19,7 +19,7 @@ const EditPostModal = ({ setIsEdit, post, postId }) => {
 
   return (
     <>
-      <div className="upload-modal edit-post">
+      <div className="modal edit-post">
         <h4 className="title">글 수정하기</h4>
         <p className="notice">( 사진은 수정이 불가해요 😅 )</p>
 
