@@ -40,17 +40,35 @@
       padding: 24px 0;
       border-top: 1px solid $border;
       border-bottom: 1px solid $border;
-     
-			button {
+
+      button {
         @include text-style(16, $primary);
-				width: 100px;
-				text-align: center;
+        width: 100px;
+        text-align: center;
+
+        &.is-active {
+          font-weight: 700;
+        }
+      }
+    }
+
+    .mypost-list {
+      overflow-y: scroll;
+      height: 350px;
+
+      &::-webkit-scrollbar {
+        display: none;
       }
     }
 
     .mypost-item {
       padding: 24px 8px;
-			border-bottom: 1px solid $border;
+      border-bottom: 1px solid $border;
+      cursor: pointer;
+
+      &:hover p {
+        opacity: 0.7;
+      }
 
       p {
         @include text-style(14, $primary);
