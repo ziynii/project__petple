@@ -1,15 +1,20 @@
 .main-content {
   &.detail {
-    padding: 24px 16px;
+    padding: 24px 0;
     overflow-y: scroll;
 
     &::-webkit-scrollbar {
       display: none;
     }
 
+    .detail-align-box-top {
+      @include flexbox(between);
+      margin-bottom: 24px;
+      padding: 0 16px;
+    }
+
     .post-author {
       @include flexbox(start);
-      margin-bottom: 24px;
 
       .author-image {
         width: 60px;
@@ -25,8 +30,16 @@
       }
     }
 
+    .edit-button {
+      @include text-style(13, $sub);
+      padding: 8px 12px;
+      background-color: $main;
+      border-radius: 4px;
+    }
+
     .post-content {
       margin-bottom: 24px;
+      padding: 0 16px;
 
       .text {
         @include text-style(16, $primary);
@@ -51,6 +64,7 @@
       @include flexbox;
       width: 100%;
       padding-bottom: 24px;
+		
 
       & > button {
         @include flexbox;
@@ -70,9 +84,11 @@
     }
 
     .comment-box {
+			padding: 0 16px;
+			
       .comment-total {
-				@include text-style(14, $dark);
-				font-weight: 700;
+        @include text-style(14, $dark);
+        font-weight: 700;
         border-bottom: 1px solid $border;
       }
 

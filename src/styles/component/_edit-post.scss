@@ -1,0 +1,5 @@
+.edit-post {
+	.notice {
+		@include text-style(13, $tertiary);
+	}
+}
