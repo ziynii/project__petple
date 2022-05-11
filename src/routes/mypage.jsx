@@ -108,7 +108,7 @@ const Mypage = () => {
         <div className="button-group">
           <button
             type="button"
-            className="tab-button"
+            className={"tab-button" + (tabName === 'write' ? ' is-active' : '')}
             onClick={() => setTabName('write')}
           >
             <strong>내가쓴 글 </strong>
@@ -116,14 +116,14 @@ const Mypage = () => {
           </button>
           <button
             type="button"
-            className="tab-button"
+            className={"tab-button" + (tabName === 'like' ? ' is-active' : '')}
             onClick={() => setTabName('like')}
           >
             <strong>좋아한 글</strong> <br /> {likes.length}개
           </button>
           <button
             type="button"
-            className="tab-button"
+            className={"tab-button" + (tabName === 'community' ? ' is-active' : '')}
             onClick={() => setTabName('community')}
           >
             <strong>내 모임</strong> <br /> {myCommunity.length}개
