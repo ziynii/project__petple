@@ -1,7 +1,7 @@
 .main-content {
   position: relative;
-  height: calc(100vh - 72px - 80px);
-  margin-top: 72px;
+  height: calc(100vh - #{$header-height} - #{$footer-height});
+  margin-top: $header-height;
 
   .align-box-top {
     position: relative;

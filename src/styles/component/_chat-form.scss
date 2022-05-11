@@ -1,7 +1,7 @@
 .chat-form {
   @include flexbox(between, start);
   width: 100%;
-  height: calc(140px - 80px);
+  height: calc(140px - #{$footer-height});
   border-top: 1px solid $border;
 
   .chat-input {
