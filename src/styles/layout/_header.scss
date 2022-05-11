@@ -16,11 +16,4 @@
       width: 100%;
     }
   }
-
-  .chat-button {
-    @include pos-center-y;
-    right: 16px;
-    font-size: 24px;
-    color: $main;
-  }
 }
