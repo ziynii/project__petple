@@ -15,8 +15,7 @@ const FreePosts = ({ user }) => {
   useEffect(() => {
     db.collection('freePosts')
       .orderBy('date','desc')
-      .get()
-      .then((result) => {
+      .onSnapshot((result) => {
         let postsArray = [];
         let docsArray = [];
 
@@ -39,7 +38,7 @@ const FreePosts = ({ user }) => {
         </div>
         <button
           type="button"
-          className="new-post-button"
+          className="new-button"
           aria-label="새 글쓰기"
           onClick={openUploadModal}
         >
