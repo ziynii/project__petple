@@ -31,7 +31,7 @@ const Community = ({ user }) => {
         </div>
         <button
           type="button"
-          className="new-post-button"
+          className="new-button"
           aria-label="새 커뮤니티 만들기"
           onClick={() => setCreateCommunity(true)}
         >
