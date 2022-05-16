@@ -49,6 +49,7 @@ const MypageEdit = ({ user }) => {
       name: userName,
     });
     navigate('/mypage');
+    window.location.reload();
   };
 
   useEffect(() => {
