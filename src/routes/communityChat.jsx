@@ -12,10 +12,10 @@ const CommunityChat = ({ user, userImage }) => {
   const dateArray = [];
 
   messages.forEach((message) => {
-    if (dateArray.includes(message.date)) {
+    if (dateArray.includes(message.date.slice(0, 10))) {
       return;
     } else {
-      dateArray.push(message.date);
+      dateArray.push(message.date.slice(0, 10));
     }
   });
 
@@ -28,9 +28,9 @@ const CommunityChat = ({ user, userImage }) => {
 
   const sortTime = (data) => {
     data.sort((a, b) => {
-      if (a.time < b.time) return -1;
-      if (a.time > b.time) return 1;
-      if (a.time === b.time) return 0;
+      if (a.date < b.date) return -1;
+      if (a.date > b.date) return 1;
+      if (a.date === b.date) return 0;
       else return -1;
     });
     return data;
@@ -64,7 +64,7 @@ const CommunityChat = ({ user, userImage }) => {
       <div className="chat-content">
         {sortDate.map((date, i) => {
           let todayMessages = messages.filter((message) => {
-            return message.date == date;
+            return message.date.slice(0, 10) == date;
           });
           return (
             <ul className="chat-list" key={i}>
@@ -73,7 +73,14 @@ const CommunityChat = ({ user, userImage }) => {
               </li>
 
               {sortTime(todayMessages).map((message, i) => {
-                return <Message message={message} user={user} key={i} userImage={userImage}/>;
+                return (
+                  <Message
+                    message={message}
+                    user={user}
+                    key={i}
+                    userImage={userImage}
+                  />
+                );
               })}
             </ul>
           );

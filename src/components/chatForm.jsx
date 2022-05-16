@@ -4,7 +4,10 @@ import { db } from '../firebase';
 const ChatForm = ({ user, docId, today }) => {
   const chatRef = useRef();
 
-  const date = new Date(+new Date() + 3240 * 10000).toISOString().split('T')[0];
+  const date = new Date(+new Date() + 3240 * 10000)
+    .toISOString()
+    .replace('T', ' ')
+    .replace(/\..*/, '');
   const hours = ('0' + today.getHours()).slice(-2);
   const minutes = ('0' + today.getMinutes()).slice(-2);
   const time = hours + ':' + minutes;
@@ -19,7 +22,7 @@ const ChatForm = ({ user, docId, today }) => {
       uid: user.uid,
       name: user.displayName,
       chatroom: docId.id,
-			userImage : user.photoURL,
+      userImage: user.photoURL,
     });
 
     chatRef.current.value = '';
