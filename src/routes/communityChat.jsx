@@ -4,7 +4,7 @@ import ChatForm from '../components/chatForm';
 import Message from '../components/message';
 import { db } from '../firebase';
 
-const CommunityChat = ({ user, userImage }) => {
+const CommunityChat = ({ user }) => {
   const docId = useParams();
   const today = new Date();
   const [community, setCommunity] = useState({});
@@ -78,7 +78,6 @@ const CommunityChat = ({ user, userImage }) => {
                     message={message}
                     user={user}
                     key={i}
-                    userImage={userImage}
                   />
                 );
               })}

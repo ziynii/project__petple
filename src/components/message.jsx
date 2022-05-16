@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Message = ({ message, user, userImage }) => {
+const Message = ({ message, user }) => {
   return (
     <li className={'chat-item' + (message.uid == user.uid ? ' mine' : '')}>
       <div
