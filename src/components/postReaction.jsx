@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { db } from '../firebase';
 
 const PostReaction = ({ post, user }) => {
   const [isLike, setIsLike] = useState(false);
