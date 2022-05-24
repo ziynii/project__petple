@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import BackButton from '../components/backButton';
 import Comment from '../components/comment';
 import CommentForm from '../components/commentForm';
 import EditPostModal from '../components/editPostModal';
@@ -64,6 +65,7 @@ const Detail = ({ user }) => {
 
   return (
     <div className="main-content detail">
+			<BackButton />
       <div className="detail-align-box-top">
         <div className="post-author">
           <div

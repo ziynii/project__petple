@@ -7,6 +7,11 @@
       display: none;
     }
 
+		.go-back-button {
+			margin-left: 16px;
+			margin-bottom: 24px;
+		}
+
     .detail-align-box-top {
       @include flexbox(between);
       margin-bottom: 24px;
