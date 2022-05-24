@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import BackButton from '../components/backButton';
 import ChatForm from '../components/chatForm';
 import Message from '../components/message';
 import { db } from '../firebase';
@@ -58,6 +59,7 @@ const CommunityChat = ({ user }) => {
   return (
     <div className="main-content community-chat">
       <div className="content-title">
+				<BackButton />
         <h3 className="title">{community.title}</h3>
       </div>
 

@@ -1,4 +1,17 @@
 .community-chat {
+  .content-title {
+    @include flexbox(between);
+    width: 100%;
+
+		.go-back-button {
+			margin-left: 16px;
+		}
+
+    .title {
+			@include pos-center-x;
+    }
+  }
+
   .chat-content {
     width: 100%;
     height: calc(100% - 140px);
