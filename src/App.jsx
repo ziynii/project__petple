@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import '@fortawesome/fontawesome-free/js/all.js';
 import './styles/main.scss';
 import Header from './components/header';
@@ -33,7 +33,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Header showHeaderAndNav={showHeaderAndNav} />
 
       <Routes>
@@ -69,7 +69,7 @@ function App() {
       </Routes>
 
       <FooterNav showHeaderAndNav={showHeaderAndNav} />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
