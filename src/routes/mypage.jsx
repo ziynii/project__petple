@@ -69,7 +69,9 @@ const Mypage = () => {
 
   return (
     <div className="main-content mypage">
-      <h3 className="content-title">마이페이지</h3>
+      <div className="align-box-top">
+        <h3 className="content-title">마이페이지</h3>
+      </div>
 
       <div className="user">
         <div className="user-left-box">
@@ -108,7 +110,7 @@ const Mypage = () => {
         <div className="button-group">
           <button
             type="button"
-            className={"tab-button" + (tabName === 'write' ? ' is-active' : '')}
+            className={'tab-button' + (tabName === 'write' ? ' is-active' : '')}
             onClick={() => setTabName('write')}
           >
             <strong>내가쓴 글 </strong>
@@ -116,14 +118,16 @@ const Mypage = () => {
           </button>
           <button
             type="button"
-            className={"tab-button" + (tabName === 'like' ? ' is-active' : '')}
+            className={'tab-button' + (tabName === 'like' ? ' is-active' : '')}
             onClick={() => setTabName('like')}
           >
             <strong>좋아한 글</strong> <br /> {likes.length}개
           </button>
           <button
             type="button"
-            className={"tab-button" + (tabName === 'community' ? ' is-active' : '')}
+            className={
+              'tab-button' + (tabName === 'community' ? ' is-active' : '')
+            }
             onClick={() => setTabName('community')}
           >
             <strong>내 모임</strong> <br /> {myCommunity.length}개
