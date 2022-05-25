@@ -4,7 +4,6 @@
   margin-top: $header-height;
 
   .align-box-top {
-    position: relative;
     position: sticky;
     top: 72px;
 
@@ -37,5 +36,4 @@
       @include text-style(14, $secondary);
     }
   }
-
 }
