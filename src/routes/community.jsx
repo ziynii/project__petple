@@ -11,15 +11,14 @@ const Community = ({ user }) => {
   const [createCommunity, setCreateCommunity] = useState(false);
 
   useEffect(() => {
-    db.collection('community')
-      .onSnapshot((result) => {
-        let communitiesArray = [];
+    db.collection('community').onSnapshot((result) => {
+      let communitiesArray = [];
 
-        result.forEach((doc) => {
-          communitiesArray.push(doc.data());
-        });
-        setCommunities(communitiesArray);
+      result.forEach((doc) => {
+        communitiesArray.push(doc.data());
       });
+      setCommunities(communitiesArray);
+    });
   }, []);
 
   return (
@@ -27,7 +26,7 @@ const Community = ({ user }) => {
       <div className="align-box-top">
         <div className="content-title">
           <h3 className="title">커뮤니티</h3>
-          <p>채팅방 형식의 커뮤니티에서 자유롭게 대화를 나눠보세요 🐶 </p>
+          <p>채팅형 커뮤니티에서 대화를 나눠보세요 </p>
         </div>
         <button
           type="button"
