@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import { toBeRequired } from '@testing-library/jest-dom/dist/matchers';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 
@@ -6,20 +7,26 @@ const Login = ({ setShowHeaderAndNav }) => {
   const navigate = useNavigate();
   const emailRef = useRef();
   const pwRef = useRef();
+  const [wrongAuth, setWrongAuth] = useState(false);
+
+  console.log(wrongAuth);
 
   const handleLoginWithEmail = () => {
-    auth.signInWithEmailAndPassword(
-      emailRef.current.value,
-      pwRef.current.value
-    );
-    navigate('/home');
-    setShowHeaderAndNav(true);
+    auth
+      .signInWithEmailAndPassword(emailRef.current.value, pwRef.current.value)
+      .then(() => {
+        navigate('/home');
+        setShowHeaderAndNav(true);
+      })
+      .catch(() => {
+        setWrongAuth(true);
+        return;
+      });
   };
 
-	useEffect(() => {
+  useEffect(() => {
     setShowHeaderAndNav(false);
   }, []);
-
 
   return (
     <div className="login-wrapper login">
@@ -59,6 +66,10 @@ const Login = ({ setShowHeaderAndNav }) => {
             로그인
           </button>
         </form>
+
+        {wrongAuth === true ? (
+          <p className="error-text">❗ 로그인 정보가 맞지 않아요 😅 ❗</p>
+        ) : null}
 
         <div className="sns-login">
           <button type="button" className="sns-login-button github-login">
