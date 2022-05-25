@@ -11,6 +11,7 @@ const CommunityChat = ({ user }) => {
   const [community, setCommunity] = useState({});
   const [messages, setMessages] = useState([]);
   const dateArray = [];
+  const scrollRef = useRef();
 
   messages.forEach((message) => {
     if (dateArray.includes(message.date.slice(0, 10))) {
@@ -37,6 +38,10 @@ const CommunityChat = ({ user }) => {
     return data;
   };
 
+  const scrollToBottom = () => {
+    scrollRef.current.scrollIntoView();
+  };
+
   useEffect(() => {
     db.collection('community')
       .doc(docId.id)
@@ -56,10 +61,14 @@ const CommunityChat = ({ user }) => {
       });
   }, []);
 
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   return (
     <div className="main-content community-chat">
       <div className="content-title">
-				<BackButton />
+        <BackButton />
         <h3 className="title">{community.title}</h3>
       </div>
 
@@ -75,20 +84,20 @@ const CommunityChat = ({ user }) => {
               </li>
 
               {sortTime(todayMessages).map((message, i) => {
-                return (
-                  <Message
-                    message={message}
-                    user={user}
-                    key={i}
-                  />
-                );
+                return <Message message={message} user={user} key={i} />;
               })}
             </ul>
           );
         })}
+        <div className="scroll-box" ref={scrollRef}></div>
       </div>
 
-      <ChatForm user={user} docId={docId} today={today} />
+      <ChatForm
+        user={user}
+        docId={docId}
+        today={today}
+        scrollToBottom={scrollToBottom}
+      />
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { db } from '../firebase';
 
-const ChatForm = ({ user, docId, today }) => {
+const ChatForm = ({ user, docId, today, scrollToBottom }) => {
   const chatRef = useRef();
 
   const date = new Date(+new Date() + 3240 * 10000)
@@ -27,6 +27,7 @@ const ChatForm = ({ user, docId, today }) => {
 
     chatRef.current.value = '';
     chatRef.current.focus();
+    scrollToBottom();
   };
 
   return (
