@@ -1,7 +1,6 @@
-import { toBeRequired } from '@testing-library/jest-dom/dist/matchers';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { auth } from '../firebase';
+import { auth, db, githubProvider, googleProvider } from '../firebase';
 
 const Login = ({ setShowHeaderAndNav }) => {
   const navigate = useNavigate();
@@ -22,6 +21,40 @@ const Login = ({ setShowHeaderAndNav }) => {
         setWrongAuth(true);
         return;
       });
+  };
+
+  const onSaveUser = (user) => {
+    db.collection('user')
+      .where('email', '!=', user.email)
+      .get()
+      .then(() => {
+        db.collection('user').doc(user.uid).set({
+          name: user.displayName,
+          email: user.email,
+          image: user.photoURL,
+        });
+      });
+  };
+
+  const goHome = () => {
+    navigate('/home');
+    setShowHeaderAndNav(true);
+  };
+
+  const handleLoginWithGoogle = () => {
+    auth.signInWithPopup(googleProvider).then((result) => {
+      const user = result.user;
+      onSaveUser(user);
+      goHome();
+    });
+  };
+
+  const handleLoginWithGithub = () => {
+    auth.signInWithPopup(githubProvider).then((result) => {
+      const user = result.user;
+      onSaveUser(user);
+      goHome();
+    });
   };
 
   useEffect(() => {
@@ -72,10 +105,18 @@ const Login = ({ setShowHeaderAndNav }) => {
         ) : null}
 
         <div className="sns-login">
-          <button type="button" className="sns-login-button github-login">
+          <button
+            type="button"
+            className="sns-login-button github-login"
+            onClick={handleLoginWithGithub}
+          >
             <i className="fa-brands fa-github"></i>
           </button>
-          <button type="button" className="sns-login-button google-login">
+          <button
+            type="button"
+            className="sns-login-button google-login"
+            onClick={handleLoginWithGoogle}
+          >
             <i className="fa-brands fa-google"></i>
           </button>
         </div>
