@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import CommunityItem from '../components/communityItem';
 import CreateCommunity from '../components/createCommunity';
 import JoinCommunityModal from '../components/joinCommunityModal';

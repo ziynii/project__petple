@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import FreePost from '../components/freePost';
 import UploadPostModal from '../components/uploadPostModal';
 import { db } from '../firebase';
@@ -15,7 +15,7 @@ const FreePosts = ({ user }) => {
 
   useEffect(() => {
     db.collection('freePosts')
-      .orderBy('date','desc')
+      .orderBy('date', 'desc')
       .onSnapshot((result) => {
         let postsArray = [];
         let docsArray = [];
