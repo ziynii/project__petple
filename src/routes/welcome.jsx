@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Helmet from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 
 const Welcome = ({ setShowHeaderAndNav, user }) => {
@@ -16,6 +17,11 @@ const Welcome = ({ setShowHeaderAndNav, user }) => {
 
   return (
     <div className="welcome login-wrapper">
+
+			<Helmet>
+				<title>PETPLE</title>
+			</Helmet>
+
       <div className="logo">
         <img src="./logo.svg" alt="로고 이미지" />
       </div>

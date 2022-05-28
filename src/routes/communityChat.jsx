@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Helmet from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/backButton';
 import ChatForm from '../components/chatForm';
@@ -67,6 +68,10 @@ const CommunityChat = ({ user }) => {
 
   return (
     <div className="main-content community-chat">
+      <Helmet>
+        <title>커뮤니티 | PETPLE</title>
+      </Helmet>
+
       <div className="content-title">
         <BackButton />
         <h3 className="title">{community.title}</h3>

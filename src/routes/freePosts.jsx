@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Helmet from 'react-helmet';
 import FreePost from '../components/freePost';
 import UploadPostModal from '../components/uploadPostModal';
 import { db } from '../firebase';
@@ -31,6 +32,10 @@ const FreePosts = ({ user }) => {
 
   return (
     <div className="main-content free">
+      <Helmet>
+        <title>놀이터 | PETPLE</title>
+      </Helmet>
+
       <div className="align-box-top">
         <div className="content-title">
           <h3 className="title">놀이터</h3>

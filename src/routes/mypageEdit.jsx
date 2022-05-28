@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Helmet from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { auth, db, storage } from '../firebase';
 
@@ -63,6 +64,10 @@ const MypageEdit = ({ user }) => {
 
   return (
     <div className="main-content mypage-edit">
+      <Helmet>
+        <title>프로필수정 | PETPLE</title>
+      </Helmet>
+
       <h3 className="content-title">프로필 수정</h3>
 
       <div className="edit-box">

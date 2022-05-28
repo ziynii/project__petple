@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Helmet from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import Carousel from '../components/carousel';
 import { db } from '../firebase';
@@ -37,6 +38,10 @@ const Home = ({ setShowHeaderAndNav, user }) => {
 
   return (
     <div className="main-content home">
+      <Helmet>
+        <title>홈 | PETPLE</title>
+      </Helmet>
+
       <Carousel />
 
       <div className="main-list-box">

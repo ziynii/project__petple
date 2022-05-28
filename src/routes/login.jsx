@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Helmet from 'react-helmet';
 import { Link, useNavigate } from 'react-router-dom';
 import { auth, db, githubProvider, googleProvider } from '../firebase';
 
@@ -63,6 +64,10 @@ const Login = ({ setShowHeaderAndNav }) => {
 
   return (
     <div className="login-wrapper login">
+      <Helmet>
+        <title>로그인 | PETPLE</title>
+      </Helmet>
+
       <div className="logo">
         <img src="./logo.svg" alt="로고 이미지" />
       </div>

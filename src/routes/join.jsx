@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import Helmet from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 
@@ -36,6 +37,10 @@ const Join = ({ setShowHeaderAndNav }) => {
 
   return (
     <div className="login-wrapper join">
+      <Helmet>
+        <title>회원가입 | PETPLE</title>
+      </Helmet>
+
       <div className="logo">
         <img src="./logo.svg" alt="로고 이미지" />
       </div>

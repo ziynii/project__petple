@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Helmet from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../firebase';
 
@@ -69,6 +70,10 @@ const Mypage = () => {
 
   return (
     <div className="main-content mypage">
+      <Helmet>
+        <title>마이페이지 | PETPLE</title>
+      </Helmet>
+
       <div className="align-box-top">
         <h3 className="content-title">마이페이지</h3>
       </div>

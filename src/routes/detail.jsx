@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import Helmet from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import BackButton from '../components/backButton';
 import Comment from '../components/comment';
@@ -65,7 +66,11 @@ const Detail = ({ user }) => {
 
   return (
     <div className="main-content detail">
-			<BackButton />
+      <Helmet>
+        <title>놀이터 | PETPLE</title>
+      </Helmet>
+
+      <BackButton />
       <div className="detail-align-box-top">
         <div className="post-author">
           <div

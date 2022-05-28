@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Helmet from 'react-helmet';
 import CommunityItem from '../components/communityItem';
 import CreateCommunity from '../components/createCommunity';
 import JoinCommunityModal from '../components/joinCommunityModal';
@@ -23,6 +24,10 @@ const Community = ({ user }) => {
 
   return (
     <div className="main-content community">
+      <Helmet>
+        <title>커뮤니티 | PETPLE</title>
+      </Helmet>
+
       <div className="align-box-top">
         <div className="content-title">
           <h3 className="title">커뮤니티</h3>
