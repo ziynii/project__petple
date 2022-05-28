@@ -3,7 +3,8 @@ import Helmet from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { auth, db, storage } from '../firebase';
 
-const MypageEdit = ({ user }) => {
+const MypageEdit = () => {
+  const user = JSON.parse(localStorage.getItem('user'));
   const [userName, setUserName] = useState(user.displayName);
   const [userImage, setUserImage] = useState('');
   const navigate = useNavigate();

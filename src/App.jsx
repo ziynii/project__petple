@@ -59,7 +59,7 @@ function App() {
         />
         <Route path="/free" element={<FreePosts user={isUser} />} />
         <Route path="/mypage" element={<Mypage />} />
-        <Route path="/mypage/edit" element={<MypageEdit user={isUser} />} />
+        <Route path="/mypage/edit" element={<MypageEdit />} />
         <Route path="/detail/:id" element={<Detail user={isUser} />} />
         <Route path="/community" element={<Community user={isUser} />} />
         <Route
