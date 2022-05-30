@@ -8,7 +8,10 @@ const Header = ({ showHeaderAndNav }) => {
         <header className="header">
           <h1 className="logo">
             <Link to="/home">
-              <img src="/logo.svg" alt="petple 로고" />
+              <img
+                src={process.env.PUBLIC_URL + 'logo.svg'}
+                alt="petple 로고"
+              />
             </Link>
           </h1>
         </header>

@@ -17,13 +17,22 @@ const Carousel = () => {
     <div className="carousel-box">
       <Slider {...settings}>
         <div className="carousel-item">
-          <img src="/imgs/main01.jpg" alt="펫플 100% 즐기기 배너" />
+          <img
+            src={process.env.PUBLIC_URL + '/imgs/main01.jpg'}
+            alt="펫플 100% 즐기기 배너"
+          />
         </div>
         <div className="carousel-item">
-          <img src="/imgs/main02.jpg" alt="사료정보 커뮤니티 홍보" />
+          <img
+            src={process.env.PUBLIC_URL + '/imgs/main02.jpg'}
+            alt="사료정보 커뮤니티 홍보"
+          />
         </div>
         <div className="carousel-item">
-          <img src="/imgs/main03.jpg" alt="반려견과 국내여행 이벤트" />
+          <img
+            src={process.env.PUBLIC_URL + '/imgs/main03.jpg'}
+            alt="반려견과 국내여행 이벤트"
+          />
         </div>
       </Slider>
     </div>
