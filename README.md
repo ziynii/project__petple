@@ -51,8 +51,6 @@
   <img src="https://user-images.githubusercontent.com/85431762/180139256-8efc25db-280b-4dc7-a21d-f55cbe8cc25d.png" alt="로그인" width="250px"/>
  </p>
  
-  초기화면 | 회원가입 | 로그인
-
 
 <br />
 
