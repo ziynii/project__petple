@@ -60,7 +60,7 @@
 🔸 **홈**
 
  <p>
-  <img src="https://user-images.githubusercontent.com/85431762/180151035-7b0af067-a585-41c4-8018-76c5b4b3e653.png" alt="홈" width="300px"/>
+  <img src="https://user-images.githubusercontent.com/85431762/180151035-7b0af067-a585-41c4-8018-76c5b4b3e653.png" alt="홈" width="250px"/>
  </p>
 
 <br />
@@ -69,9 +69,9 @@
 🔸 **놀이터**
 
  <p>
-  <img src="https://user-images.githubusercontent.com/85431762/180151301-2264e7e9-1427-46b5-8434-fe3e2efcea1f.png" alt="놀이터 글 전체보기" width="300px"/>
-  <img src="https://user-images.githubusercontent.com/85431762/180151499-b8383c24-b522-49e0-99c5-72779fe91ea8.png" alt="놀이터 글 자세히보기" width="300px"/>
-  <img src="https://user-images.githubusercontent.com/85431762/180151663-cc278484-452b-4c0e-84da-503b6aa37a0b.png" alt="놀이터 글 쓰기" width="300px"/>
+  <img src="https://user-images.githubusercontent.com/85431762/180151301-2264e7e9-1427-46b5-8434-fe3e2efcea1f.png" alt="놀이터 글 전체보기" width="250px"/>
+  <img src="https://user-images.githubusercontent.com/85431762/180151499-b8383c24-b522-49e0-99c5-72779fe91ea8.png" alt="놀이터 글 자세히보기" width="250px"/>
+  <img src="https://user-images.githubusercontent.com/85431762/180151663-cc278484-452b-4c0e-84da-503b6aa37a0b.png" alt="놀이터 글 쓰기" width="250px"/>
  </p>
 
 <br />
@@ -79,9 +79,9 @@
 🔸 **커뮤니티**
 
  <p>
-  <img src="https://user-images.githubusercontent.com/85431762/180151991-c721f19a-4a10-47cd-9fda-851df94cdc2f.png" alt="커뮤니티 전체보기" width="300px"/>
-  <img src="https://user-images.githubusercontent.com/85431762/180152144-5e51d719-9c09-4224-8c1f-2837443fd972.png" alt="커뮤니티 채팅방" width="300px"/>
-  <img src="https://user-images.githubusercontent.com/85431762/180152248-8f951ff4-6e53-46c0-b688-e1598e07d157.png" alt="로그인" width="300px"/>
+  <img src="https://user-images.githubusercontent.com/85431762/180151991-c721f19a-4a10-47cd-9fda-851df94cdc2f.png" alt="커뮤니티 전체보기" width="250px"/>
+  <img src="https://user-images.githubusercontent.com/85431762/180152144-5e51d719-9c09-4224-8c1f-2837443fd972.png" alt="커뮤니티 채팅방" width="250px"/>
+  <img src="https://user-images.githubusercontent.com/85431762/180152248-8f951ff4-6e53-46c0-b688-e1598e07d157.png" alt="로그인" width="250px"/>
  </p>
  
  <br />
@@ -91,8 +91,8 @@
 
 
  <p>
-  <img src="https://user-images.githubusercontent.com/85431762/180152396-576971aa-3648-4afb-b888-ed287926c6c2.png" alt="마이페이지" width="300px"/>
-  <img src="https://user-images.githubusercontent.com/85431762/180152462-130dce7b-7137-4590-b965-b20d98294249.png" alt="프로필 " width="300px"/>
+  <img src="https://user-images.githubusercontent.com/85431762/180152396-576971aa-3648-4afb-b888-ed287926c6c2.png" alt="마이페이지" width="250px"/>
+  <img src="https://user-images.githubusercontent.com/85431762/180152462-130dce7b-7137-4590-b965-b20d98294249.png" alt="프로필 " width="250px"/>
  </p>
 <Br />
 
