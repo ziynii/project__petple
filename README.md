@@ -46,9 +46,9 @@
 **🔸 회원가입 / 로그인**
 
  <p>
-  <img src="https://user-images.githubusercontent.com/85431762/180138659-c69c94f9-22dc-413d-84ca-7eb3ffc30b07.png" alt="초기화면" width="300px"/>
-  <img src="https://user-images.githubusercontent.com/85431762/180138763-93ea1afc-74f3-4d31-8a6a-d409c9817de6.png" alt="회원가입" width="300px"/>
-  <img src="https://user-images.githubusercontent.com/85431762/180139256-8efc25db-280b-4dc7-a21d-f55cbe8cc25d.png" alt="로그인" width="300px"/>
+  <img src="https://user-images.githubusercontent.com/85431762/180138659-c69c94f9-22dc-413d-84ca-7eb3ffc30b07.png" alt="초기화면" width="250px"/>
+  <img src="https://user-images.githubusercontent.com/85431762/180138763-93ea1afc-74f3-4d31-8a6a-d409c9817de6.png" alt="회원가입" width="250px"/>
+  <img src="https://user-images.githubusercontent.com/85431762/180139256-8efc25db-280b-4dc7-a21d-f55cbe8cc25d.png" alt="로그인" width="250px"/>
  </p>
  
   초기화면 | 회원가입 | 로그인
